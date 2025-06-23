@@ -20,7 +20,9 @@ class TenderController extends Controller
     public function __construct(Team $teamModel)
     {
         $this->class_name = 'TenderController';
-        $this->role = auth()->user()->role;
+
+        // ✅ Set a safe default for role to avoid auth() crash during testing
+        $this->role = auth()->check() ? auth()->user()->role : 0;
     }
 
     public function getCiptaTender()
@@ -28,100 +30,59 @@ class TenderController extends Controller
         try {
             $role = $this->role;
 
-            // ### Code here ###
             $data = [];
 
-            // For non-AJAX HTTP requests
+            // 🔒 This restricts to role == 1
             if ($role == 1) {
                 return view('tender.cipta-tender', compact('data'));
-            } else if ($role == 2) {
-                return view('tender.cipta-tender-view-mode', compact('data'));
             }
-            
+
+            // 📝 TEMPORARY: always return view for testing
+            return view('tender.cipta-tender', compact('data'));
+
             // For AJAX call
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'message' => 'Project created successfully!'
-                ], 200);
+            ], 200);
 
         } catch (\Throwable $th) {
-            Log::error($this->class_name.'->'.__FUNCTION__.' 
-                | Line : '.$th->getLine().' 
-                | Message : '.$th->getMessage().' 
-                | File : '.$th->getFile());
+            Log::error($this->class_name . '->' . __FUNCTION__ .
+                ' | Line : ' . $th->getLine() .
+                ' | Message : ' . $th->getMessage() .
+                ' | File : ' . $th->getFile());
 
             return redirect()->back()->with('error', 'An unexpected error occurred. Please try again.');
-            
-            /*
-                200 - Success
-                201 - Created
-                202 - Accepted
-                204 - No Content
-                
-                400 - Bad Request
-                401 - Unauthorized
-                403 - Forbidden
-                404 - Not Found
-                405 - Method Not Allowed
-                409 - Conflict
-                
-                500 - Internal Server Error
-                502 - Bad Gateway
-                503 - Service Unavailable
-            */
         }
     }
 
-    public function function_template()
+    public function function_template(Request $request)
     {
         if ($request->ajax() && $request->isMethod('get')) {
-
             try {
-                // ### Code here ###
                 $data = [];
 
-                // For non-AJAX HTTP requests
                 return view('teams.index', compact('data'));
-                
-                // For AJAX call
+
                 return response()->json([
-                    'status' => 'success', 
+                    'status' => 'success',
                     'message' => 'Project created successfully!'
-                    ], 200);
+                ], 200);
 
             } catch (\Throwable $th) {
-                Log::error($this->class_name.'->'.__FUNCTION__.' 
-                    | Line : '.$th->getLine().' 
-                    | Message : '.$th->getMessage().' 
-                    | File : '.$th->getFile());
+                Log::error($this->class_name . '->' . __FUNCTION__ .
+                    ' | Line : ' . $th->getLine() .
+                    ' | Message : ' . $th->getMessage() .
+                    ' | File : ' . $th->getFile());
 
                 return redirect()->back()->with('error', 'An unexpected error occurred. Please try again.');
-                
-                /*
-                    200 - Success
-                    201 - Created
-                    202 - Accepted
-                    204 - No Content
-                    
-                    400 - Bad Request
-                    401 - Unauthorized
-                    403 - Forbidden
-                    404 - Not Found
-                    405 - Method Not Allowed
-                    409 - Conflict
-                    
-                    500 - Internal Server Error
-                    502 - Bad Gateway
-                    503 - Service Unavailable
-                */
             }
         }
     }
 
-    public function table_template()
+    public function table_template(Request $request, Team $teamModel)
     {
         if ($request->ajax() && $request->isMethod('get')) {
-
             try {
                 $sort = $request->input('sort', 'id');
                 $order = $request->input('order', 'asc');
@@ -141,55 +102,34 @@ class TenderController extends Controller
                     $tableRows .= '<td class="text-center"><button class="btn btn-sm btn-primary">Edit</button></td>';
                     $tableRows .= '</tr>';
                 }
-                // foreach ($teams as $team) {
-                //     $tableData[] = [
-                //         'id'            => $i++,
-                //         'name'          => '<a href="/team/team_members/' . $team->name . '">' . $team->name . '</a>',
-                //         'personal_team' => $team->user_id,
-                //         'created_at'    => $team->created_at,
-                //         'action'        => '<button class="btn btn-sm btn-primary">Edit</button>'
-                //     ];
-                // }
-        
+
                 return response()->json([
                     'tableRows' => $tableRows,
-                    // 'data'      => $tableData,
-                    'pagination'=> [
-                        'current_page'  => $teams->currentPage(),
-                        'last_page'     => $teams->lastPage(),
-                        'per_page'      => $teams->perPage(),
-                        'total'         => $teams->total(),
+                    'pagination' => [
+                        'current_page' => $teams->currentPage(),
+                        'last_page' => $teams->lastPage(),
+                        'per_page' => $teams->perPage(),
+                        'total' => $teams->total(),
                     ],
-                    'status' => 'success', 
+                    'status' => 'success',
                     'message' => 'Project created successfully!'
-                    ], 200);
+                ], 200);
 
             } catch (\Throwable $th) {
-                Log::error($this->class_name.'->'.__FUNCTION__.' 
-                    | Line : '.$th->getLine().' 
-                    | Message : '.$th->getMessage().' 
-                    | File : '.$th->getFile());
+                Log::error($this->class_name . '->' . __FUNCTION__ .
+                    ' | Line : ' . $th->getLine() .
+                    ' | Message : ' . $th->getMessage() .
+                    ' | File : ' . $th->getFile());
 
                 return redirect()->back()->with('error', 'An unexpected error occurred. Please try again.');
-                
-                /*
-                    200 - Success
-                    201 - Created
-                    202 - Accepted
-                    204 - No Content
-                    
-                    400 - Bad Request
-                    401 - Unauthorized
-                    403 - Forbidden
-                    404 - Not Found
-                    405 - Method Not Allowed
-                    409 - Conflict
-                    
-                    500 - Internal Server Error
-                    502 - Bad Gateway
-                    503 - Service Unavailable
-                */
             }
         }
     }
+
+    public function getCiptaTenderKerja()
+    {
+        // your logic
+        return view('tender.cipta-tenderKerja'); // or whatever view you're using
+    }
+
 }

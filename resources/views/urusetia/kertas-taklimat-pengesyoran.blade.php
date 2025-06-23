@@ -7,7 +7,9 @@
 
 @section('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection
 
 
@@ -30,16 +32,6 @@
 
         hr {
             border: 1px solid #E9EBEC;
-        }
-
-        .hanging-indent {
-            padding-left: 1em;
-            text-indent: -1em;
-        }
-
-        .second-hanging-indent {
-            padding-left: 3em;
-            text-indent: -1em;
         }
 
         /* test */
@@ -1097,6 +1089,18 @@
             vertical-align: middle;
         }
 
+        .custom-tab-size .nav-link {
+            padding: 12px 80px;
+            /* Increase padding */
+
+        }
+
+        .table thead th {
+            background-color: #3e5a9a;
+            color: white;
+            font-weight: 600;
+        }
+
         /* test */
     </style>
 
@@ -1136,429 +1140,242 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div id="custom-progress-bar" class="progress-nav mb-4 p-2">
-                        <div class="progress" style="height: 1px;">
-                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <ul class="nav nav-pills progress-bar-tab custom-nav" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button type="button" id="agency-tab" class="nav-link rounded-pill active"
-                                    data-progressbar="custom-progress-bar" data-bs-toggle="pill" data-bs-target="#agency"
-                                    data-title="@lang('translation.application-information')" role="tab"
-                                    aria-controls="agency" aria-selected="true">1</button>
+                    <div class="tab-content px-3" id="application-content">
+                        <ul class="nav nav-pills custom-tab-size mb-3" role="tablist">
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#kertas-taklimat" role="tab"
+                                    aria-selected="true">Penyediaan Kertas Taklimat</a>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button type="button" id="program-tab" class="nav-link rounded-pill"
-                                    data-progressbar="custom-progress-bar" data-bs-toggle="pill" data-bs-target="#program"
-                                    data-title="@lang('translation.program-information')" role="tab" aria-controls="program"
-                                    aria-selected="false">2</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button type="button" id="expenses-tab" class="nav-link rounded-pill"
-                                    data-progressbar="custom-progress-bar" data-bs-toggle="pill" data-bs-target="#expenses"
-                                    data-title="@lang('translation.expenses-list')" role="tab" aria-controls="expenses"
-                                    aria-selected="false">3</button>
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link" data-bs-toggle="tab" href="#item" role="tab"
+                                    aria-selected="false">Item</a>
                             </li>
                         </ul>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="agency" role="tabpanel" aria-labelledby="agency-tab">
-                            <div id="iklan-wrapper">
-                                <h4 class="card-title card-title-grey">PENYEDIAAN IKLAN</h4>
-                                <div class="row mt-4">
-                                    <div class="col-2"></div>
-                                    <div class="col-md-2 d-flex justify-content-end">
-                                        <label for="" class="">Tarikh Iklan <span class="text-danger">*</span></label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="date" name="" id="" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="time" name="" id="" value="12:00" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-
-                                    <div class="col-2"></div>
-                                    <div class="col-md-2 d-flex justify-content-end">
-                                        <label for="" class="">Tarikh Jual <span class="text-danger">*</span></label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="date" name="" id="" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="row mt-4">
-                                    <div class="col-2"></div>
-                                    <div class="col-md-2 d-flex justify-content-end">
-                                        <label for="" class="">Tempoh Iklan (Hari)</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" name="" id="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-2"></div>
-                                    <div class="col-md-2 d-flex justify-content-end">
-                                        <label for="" class="">Tarikh Tutup</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="date" name="" id="" class="form-control">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="time" name="" id="" value="12:00" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-2"></div>
-                                    <div class="col-md-2 d-flex text-end">
-                                        <label for="" class="">Tempoh Sah Laku Tawaran (Hari)</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" name="" id="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-2"></div>
-                                    <div class="col-md-2 d-flex justify-content-end">
-                                        <label for="" class="">Sah Laku Tawaran Tamat</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="date" name="" id="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-2"></div>
-                                    <div class="col-md-2 d-flex justify-content-end">
-                                        <label for="" class="">Kebenaran Khas</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="checkbox" name="" id="" class="form-check-input">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="kertas-taklimat" role="tabpanel">
+                                <!-- Content for Teknikal of progress 1 -->
+                                <h4 class="card-title card-title-grey">SEKSYEN LAPORAN</h4>
+                                <p class="card-title-desc text-primary fst-italic">1. Kunci Masuk bagi kedudukan Pakej dan
+                                    Item</p>
+                                <p class="card-title-desc text-primary fst-italic">2. Klik di ruangan Tindakan untuk mengisi
+                                    Kertas Taklimat</p>
+                                <table class="table table-bordered dt-responsive nowrap w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <input type="checkbox" id="checkAll">
+                                            </th>
+                                            <th class="text-center">Kandungan</th>
+                                            <th class="text-center">Tindakan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <input type="checkbox" class="checkItem">
+                                            </td>
+                                            <td class="">Laporan Jawatankuasa Pembuka</td>
+                                            <td class="">
+                                                <a href="#">Muat Turun</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <input type="checkbox" class="checkItem">
+                                            </td>
+                                            <td class="">Laporan Jawatankuasa Teknikal</td>
+                                            <td class="">
+                                                <a href="#">Muat Turun</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <input type="checkbox" class="checkItem">
+                                            </td>
+                                            <td class="">Laporan Jawatankuasa Kewangan</td>
+                                            <td class="">
+                                                <a href="#">Muat Turun</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <input type="checkbox" class="checkItem">
+                                            </td>
+                                            <td class="">Kertas Taklimat (Perakuan Jabatan)</td>
+                                            <td class="">
+                                                <a href="#">Muat Turun</a>
+                                                <a href="#">Muat Naik</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <input type="checkbox" class="checkItem">
+                                            </td>
+                                            <td class="">Ringkasan Kertas Taklimat (Wajib untuk tender)</td>
+                                            <td class="">
+                                                <a href="#">Muat Turun</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row mb-3 px-3">
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button class="btn btn-success">Muat Turun Semua</button>
+                                        <button class="btn btn-primary">Tambah</button>
+                                        <button class="btn btn-danger">Hapus</button>
                                     </div>
                                 </div>
-                                <div class="row mt-4">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button type="button" class="btn btn-success mx-1">Simpan</button>
-                                        <button type="button" id="next-tab" class="btn btn-primary mx-1"
-                                            data-progressbar="custom-progress-bar" data-bs-target="#program"
-                                            data-title="Seterusnya" role="tab" aria-controls="program"
-                                            aria-selected="false">Seterusnya</button>
+                                <h4 class="card-title card-title-grey">CATATAN</h4>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="remarks" id="remarks" rows="4"
+                                        placeholder="Masukkan catatan di sini..."></textarea>
+                                </div>
+                                <div class="row mb-3 px-3">
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <button class="btn btn-success">Simpan</button>
+                                        <button class="btn btn-primary">Hantar</button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- program information -->
-                        <div class="tab-pane fade" id="program" role="tabpanel" aria-labelledby="program-tab">
-                            <div class="row mt-4 justify-content-center">
-                                <div class="col-12">
-                                    <h4 class="card-title card-title-grey">SYARAT TENDER</h4>
-                                    <p class="card-title-desc text-primary fst-italic">
-                                        Syarat Tender wajib di isi
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-12">
-                                    <input id="syarat-tender" type="hidden" name="syarat_tender">
-                                    <trix-editor input="syarat-tender" class="form-control"></trix-editor>
                                 </div>
                             </div>
 
 
-                            <div class="row mt-4 justify-content-center">
-                                <div class="col-12">
-                                    <h4 class="card-title card-title-grey">SYARAT KHAS</h4>
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <label for="" class="text-end">Syarikat Selangor Sahaja</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="checkbox" name="" id="" class="form-check-input">
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <label for="" class="text-end">Syarikat Selangor Dan Lain-lain Negeri</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="checkbox" name="" id="" class="form-check-input">
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <label for="" class="text-end">Seluruh Malaysia</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="checkbox" name="" id="" class="form-check-input">
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <label for="" class="text-end">Syarikat Daerah / Negeri</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <select name="" id="" class="form-control">
-                                        <option value="" selected>Pilihan Daerah</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <label for="" class="text-end">Bumiputera Sahaja</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="checkbox" name="" id="" class="form-check-input">
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <label for="" class="text-end">Tender Terhad</label>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="checkbox" name="" id="" class="form-check-input">
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <label for="" class="text-end">Iklan Sahaja</label>
-                                </div>
-                                <div class="col-md-5">
-                                    <input type="checkbox" name="" id="" class="form-check-input"><span
-                                        class="fw-lighter ms-4">Sila
-                                        Tandakan / sekiranya penjualan dibuat secara manual</span>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <div class="col-12 d-flex justify-content-between">
-                                    <div class="left">
-                                        <button type="button" class="btn btn-info mx-1">Sebelumnya</button>
-                                    </div>
-                                    <div class="right">
-                                        <button type="button" class="btn btn-success mx-1">Simpan</button>
-                                        <button type="button" id="next-tab" class="btn btn-primary mx-1"
-                                            data-progressbar="custom-progress-bar" data-bs-target="#program"
-                                            data-title="Seterusnya" role="tab" aria-controls="program"
-                                            aria-selected="false">Seterusnya</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- expenses list -->
-                        <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
-                            <div class="row mt-4 justify-content-center">
-                                <div class="col-12">
-                                    <h4 class="card-title card-title-grey">PERINCIAN TAKLIMAT TENDER (PRA-TENDER/PRA-SEBUT
-                                        HARGA) / LAWATAN TAPAK</h4>
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-12">
-                                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100"
-                                        data-table-sort="id" data-table-order="asc" data-page="1">
+                            <div class="tab-pane fade" id="item" role="tabpanel" aria-labelledby="item">
+                                {{-- Content for Item --}}
+                                <h4 class="card-title card-title-grey">SENARAI ITEM</h4>
+                                <p class="card-title-desc text-primary fst-italic">Sila klik pada item untuk melihat
+                                    senarai pembekal</p>
+                                <!-- Table for Items -->
+                                <table class="table table-bordered dt-responsive nowrap w-100">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <input type="checkbox" id="checkAll">
+                                            </th>
+                                            <th class="text-center">Item</th>
+                                            <th class="text-center">Jenis Item</th>
+                                            <th class="text-center">Unit Ukuran</th>
+                                            <th class="text-center">Jenis Harga</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <input type="checkbox" class="checkItem">
+                                            </td>
+                                            <td class="item-clickable text-primary" style="cursor: pointer;">
+                                                Tender Perkhidmatan Penilaian Forensik Keatas Sistem XXXX
+                                            </td>
+                                            <td class="">Perkhidmatan</td>
+                                            <td class="">Activity Unit</td>
+                                            <td class="">Biasa Standard</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                                <!-- Hidden SENARAI PEMBEKAL section -->
+                                <div id="senaraiPembekalSection" style="display: none;">
+                                    <br>
+                                    <h4 class="card-title card-title-grey">SENARAI PEMBEKAL</h4><br>
+                                    <table class="table table-bordered text-center align-middle">
                                         <thead>
                                             <tr>
-                                                <th class="text-center"><input type="checkbox" name="" id=""
-                                                        class="form-check-input"></th>
-                                                <th class="text-center">Perihal</th>
-                                                <th class="text-center">Tarikh / Masa</th>
-                                                <th class="text-center">Lokasi / Alamat</th>
-                                                <th class="text-center">Wajib Hadir</th>
+                                                <th rowspan="2">Bil</th>
+                                                <th rowspan="2">Status Bumiputra</th>
+                                                <th rowspan="2">Harga Tawaran (RM)</th>
+                                                <th rowspan="2">Skor Teknikal</th>
+                                                <th colspan="2">Kedudukan Penilaian</th>
+                                                <th rowspan="2">Status Pendaftaran MOF</th>
+                                                <th colspan="2">Maklumat Tambahan</th>
+                                                <th rowspan="2">Kedudukan oleh Urusetia</th>
+                                                <th rowspan="2">Catatan Urusetia</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Teknikal</th>
+                                                <th>Kewangan</th>
+                                                <th>Tindakan Disiplin Diambil</th>
+                                                <th>Lembaga Pengarah</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="text-center"><input type="checkbox" name="" id=""
-                                                        class="form-check-input"></td>
-                                                <td class="text-center">Tender Perkhidmatan Digital dan Forensik</td>
-                                                <td class="text-center">6 April 2024<br>10.00 pagi</td>
-                                                <td class="text-center">Putrajaya</td>
-                                                <td class="text-center">Wajib</td>
+                                                <td>2/2</td>
+                                                <td>Ya</td>
+                                                <td>360,000.00</td>
+                                                <td>96.43</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>Aktif</td>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn btn-light">
+                                                        <i class="bi bi-file-earmark-text"></i>
+                                                        <!-- Or use Font Awesome: <i class="fa fa-file"></i> -->
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control text-center" value="2">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>1/2</td>
+                                                <td>Tidak</td>
+                                                <td>330,000.00</td>
+                                                <td>94.53</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>Aktif</td>
+                                                <td></td>
+                                                <td>
+                                                    <button class="btn btn-light">
+                                                        <i class="bi bi-file-earmark-text"></i>
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control text-center" value="1">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control">
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                            <div class="row mt-4 mx-4">
-                                <div class="col-12 d-flex justify-content-between">
-                                    <div class="left">
+                                    <br>
+                                    <h4 class="card-title card-title-grey">CATATAN</h4><br>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" name="remarks" id="remarks" rows="4"
+                                            placeholder="Masukkan catatan di sini..."></textarea>
                                     </div>
-                                    <div class="right">
-                                        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
-                                            data-bs-target="#borangPerincianTaklimatTender">Tambah</button>
-                                        <button type="button" class="btn btn-danger mx-1">Hapus</button>
+                                    <div class="row mb-3 px-3">
+                                        <div class="d-flex justify-content-end gap-2">
+                                            <button class="btn btn-success">Simpan</button>
+                                            <button class="btn btn-primary">Hantar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row mt-4 justify-content-center">
-                                <div class="col-12">
-                                    <h4 class="card-title card-title-grey">PEGAWAI UNTUK DIHUBUNGI</h4>
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-12">
-                                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100"
-                                        data-table-sort="id" data-table-order="asc" data-page="1">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center"><input type="checkbox" name="" id=""
-                                                        class="form-check-input"></th>
-                                                <th class="text-center">Nama</th>
-                                                <th class="text-center">No. Telefon</th>
-                                                <th class="text-center">No. Faks</th>
-                                                <th class="text-center">Email</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center"><input type="checkbox" name="" id=""
-                                                        class="form-check-input"></td>
-                                                <td class="text-center">Urus Setia Ptj284</td>
-                                                <td class="text-center">012-34567898</td>
-                                                <td class="text-center">06-98765431</td>
-                                                <td class="text-center">contoh@mail.com</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4 mx-4">
-                                <div class="col-12 d-flex justify-content-between">
-                                    <div class="left">
-                                        <button type="button" class="btn btn-info mx-1">Sebelumnya</button>
-                                    </div>
-                                    <div class="right">
-                                        <button type="button" class="btn btn-success mx-1">Simpan</button>
-                                        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal"
-                                            data-bs-target="#borangPerincianTaklimatTender">Selesai</button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-
-                </div>
-                <!-- <div class="row mt-4 justify-content-center">
-                                                                    <div class="col-12">
-                                                                        <h4 class="card-title card-title-grey">PENYEDIAAN IKLAN</h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row my-2">
-                                                                    <div class="col-12">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-12 d-flex justify-content-between">
-                                                                        <div class="left"></div>
-                                                                        <div class="right">
-                                                                            <button class="btn btn-success mx-1">Simpan</button>
-                                                                            <button class="btn btn-primary mx-1">Seterusnya</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
 
 
-                <div class="modal fade" id="borangPerincianTaklimatTender" tabindex="-1"
-                    aria-labelledby="borangPerincianTaklimatTenderLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="borangPerincianTaklimatTenderLabel">Borang Perincian Taklimat
-                                    Tender
-                                    (Pra-Tender / Pra-Sebut Harga)</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-8 mb-2">Perihal</div>
-                                    <div class="col-4">Tarikh</div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-8 mb-2"><input type="text" name="" id="" class="form-control"></div>
-                                    <div class="col-4"><input type="date" name="" id="" class="form-control"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-8 mb-2">Lokasi</div>
-                                    <div class="col-4">Masa</div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-8 mb-2"><input type="text" name="" id="" class="form-control"></div>
-                                    <div class="col-4"><input type="time" name="" id="" class="form-control"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-8 mb-2">Pegawai Penyelaras</div>
-                                    <div class="col-4">Wajib Hadir</div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-8 mb-2"><input type="text" name="" id="" class="form-control"></div>
-                                    <div class="col-4 second-hanging-indent"><input type="checkbox" name="" id=""
-                                            class="form-check-input me-2">Wajib</div>
-                                </div>
-                                <div class="row my-2">
-                                    <div class="col-12 d-flex justify-content-end">
-                                        <button class="btn btn-success m-1">Simpan</button>
-                                        <button class="btn btn-primary m-1">Batal</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <!-- <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100" 
-                                                data-table-sort="id"
-                                                data-table-order="asc"
-                                                data-page="1">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-center"><input type="checkbox" name="" id="" class="form-check-input"></th>
-                                                        <th class="text-center">Jenis Kelulusan</th>
-                                                        <th class="text-center">Status <span class="text-danger">*</span></th>
-                                                        <th class="text-center">Dokumen</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-center"><input type="checkbox" name="" id="" class="form-check-input"></td>
-                                                        <td class="">Kelulusan Berbelanja</td>
-                                                        <td class="text-center">
-                                                            <select name="" id="" class="form-control">
-                                                                <option value="">Diluluskan</option>
-                                                            </select>
-                                                        </td>
-                                                        <td class="text-center"><button class="btn btn-success">Muat Naik</button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table> -->
+            </div>
 
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const itemCell = document.querySelector('.item-clickable');
+                    const pembekalSection = document.getElementById('senaraiPembekalSection');
 
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const iklanWrapper = document.getElementById('iklan-wrapper');
-
-                        // Handle tab clicks
-                        document.getElementById('program-tab').addEventListener('click', function () {
-                            iklanWrapper.style.display = 'none';
-                        });
-
-                        document.getElementById('agency-tab').addEventListener('click', function () {
-                            iklanWrapper.style.display = 'block';
-                        });
+                    itemCell.addEventListener('click', function () {
+                        pembekalSection.style.display = 'block';
+                        pembekalSection.scrollIntoView({ behavior: 'smooth' });
                     });
+                });
+            </script>
 
-                    document.querySelector('.btn-primary[data-bs-target="#borangPerincianTaklimatTender"]').addEventListener('click', function () {
-                        console.log('Opening modal...');
-
-
-
-                </script>
-
+        </div>
 @endsection

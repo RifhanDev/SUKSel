@@ -1166,14 +1166,14 @@
                             </div>
                             <div class="row d-flex justify-content-center">
                                 <div class="col-11">
-                                    <div class="row">
+                                    <div class="row mb-4">
                                         <!-- Kaedah Perolehan -->
                                         <div class="col-md-12 my-2">
-                                            <div class="row">
+                                            <div class="row mb-4">
                                                 <div class="col-md-2 text-end">
                                                     <label for="" class="">Kaedah Perolehan</label>
                                                 </div>
-                                                <div class="col-md-2 text-end">
+                                                <div class="col-md-2">
                                                     <select class="form-control" name="">
                                                         <option value="">Tender</option>
                                                         <option value="">Sebut Harga</option>
@@ -1184,232 +1184,230 @@
                                                             class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <select class="form-control" id="kategoriJenis">
-                                                        <option value="perkhidmatan">Perkhidmatan</option>
-                                                        <option value="bekalan">Bekalan</option>
-                                                        <option value="kerja">Kerja</option>
+                                                    <select class="form-control" name="">
+                                                        <option value="">Perkhidmatan</option>
+                                                        <option value="">Bekalan</option>
+                                                        <option value="">Kerja</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- Default Form - Cipta Tender --}}
-                                        <div id="ciptaTenderForm">
-                                            <!-- Kategori Jenis Perolehan -->
-                                            <!-- Item Panel -->
+                                        <!-- Kaedah Perolehan -->
+
+
+
+                                        <!-- Tajuk Perolehan -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row mb-4">
+                                                <div class="col-md-2 text-end">
+                                                    <label for="" class="">Tajuk Perolehan <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <textarea class="form-control" name=""></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Tajuk Perolehan -->
+                                        <!-- Disediakan Untuk PTJ -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row mb-4">
+                                                <div class="col-md-2 text-end">
+                                                    <label for="" class="">Disediakan Untuk PTJ <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="input-group">
+                                                        <select class="form-control" name="">
+                                                            <option value="">BAHAGIAN PENTADBIRAN - CAWANNGAN KEWANGAN -
+                                                                KEMENTERIAN KEWANGAN</option>
+                                                        </select>
+                                                        <span class="input-group-text"><i
+                                                                class="bx bx-search-alt"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Disediakan Untuk PTJ -->
+                                        <!-- No. Rujukan Fail -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row">
+                                                <div class="col-md-2 text-end">
+                                                    <label for="" class="">No. Rujukan Fail <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- No. Rujukan Fail -->
+                                        <!-- No. Tender/Sebut Harga -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row">
+                                                <div class="col-md-2 text-end">
+                                                    <label for="" class="">No. Tender/Sebut Harga <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- No. Tender/Sebut Harga -->
+                                        <!-- Tarikh Dicipta -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row ">
+                                                <div class="col-md-2 text-end">
+                                                    <label for="" class="">Tarikh Dicipta</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input class="form-control" type="date">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Tarikh Dicipta -->
+                                        <!-- Harga Indikatif Jabatan (RM) -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row ">
+                                                <div class="col-md-2 text-end">
+                                                    <label class="">Harga Indikatif Jabatan (RM) <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" type="number" name="">
+                                                </div>
+                                                <div class="col-md-4 text-end">
+                                                    <label class="">Sumber Peruntukan <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="formRadios"
+                                                            id="formRadios1" checked>
+                                                        <label class="form-check-label"
+                                                            for="formRadios1">Pembangunan</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="formRadios"
+                                                            id="formRadios2">
+                                                        <label class="form-check-label" for="formRadios2">Mengurus</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="formRadios"
+                                                            id="formRadios3">
+                                                        <label class="form-check-label" for="formRadios3">Lain-Lain</label>
+                                                    </div>
+                                                    <!-- Textbox for "Lain-Lain", hidden initially -->
+                                                    <div id="lainLainInput" class="mt-2" style="display: none;">
+                                                        <input type="text" class="form-control" placeholder="Sila nyatakan">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Harga Indikatif Jabatan (RM) -->
+                                        <!-- Anggaran Jabatan -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row ">
+                                                <div class="col-md-2 text-end">
+                                                    <label for="" class="">Anggaran Jabatan (RM) <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" type="number" name="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Anggaran Jabatan -->
+
+                                        <!-- Jenis Sebut Harga / Tender -->
+                                        <div class="col-md-12 my-2">
+                                            <div class="row">
+                                                <div class="col-md-2 text-end">
+                                                    <label for="" class=""> Jenis Tender/Sebut Harga <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <select class="form-control" name="">
+                                                        <option value="">Konvensional</option>
+                                                        <option value="">Reka & Bina</option>
+                                                        <option value="">Terhad</option>
+                                                    </select>
+
+
+                                                </div>
+                                                <div class="col-md-4 text-end">
+                                                    <label for="" class="">Terbuka Kepada <span
+                                                            class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="terbukaKepada"
+                                                            id="terbukaKepada1">
+                                                        <label class="form-check-label" for="terbukaKepada1">
+                                                            Bumiputra
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="terbukaKepada"
+                                                            id="terbukaKepada2" checked>
+                                                        <label class="form-check-label" for="terbukaKepada2">
+                                                            Semua
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Jenis Sebut Harga / Tender -->
+
+                                            <!-- Zon / Lokasi -->
                                             <div class="col-md-12 my-2">
                                                 <div class="row">
-                                                    <div class="col-md-2 d-flex justify-content-end">
-                                                        <label for="" class="">Item Panel <span
-                                                                class="text-danger">*</span></label>
+                                                    <div class="col-md-2 text-end">
+                                                        <label for="" class="">Zon / Lokasi</label>
                                                     </div>
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-2">
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="formRadios"
-                                                                id="formRadios1" checked>
-                                                            <label class="form-check-label" for="formRadios1">
+                                                            <input class="form-check-input" type="radio" name="zonLokasi"
+                                                                id="zonLokasi1">
+                                                            <label class="form-check-label" for="zonLokasi1">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="formRadios"
-                                                                id="formRadios2">
-                                                            <label class="form-check-label" for="formRadios2">
+                                                            <input class="form-check-input" type="radio" name="zonLokasi"
+                                                                id="zonLokasi2" checked>
+                                                            <label class="form-check-label" for="zonLokasi2">
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-4 text-end ">
+                                                        <label for="" class="">Taklimat Tender / Lawatan Tapak&nbsp;<span
+                                                                class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="taklimat"
+                                                                id="ada" checked>
+                                                            <label class="form-check-label" for="ada">
+                                                                Ada
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="taklimat"
+                                                                id="tidak">
+                                                            <label class="form-check-label" for="tidak">
                                                                 Tidak
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Item Panel -->
-                                            <!-- Tajuk Perolehan -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 d-flex justify-content-end">
-                                                        <label for="" class="">Tajuk Perolehan <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-10">
-                                                        <textarea class="form-control" name=""></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Tajuk Perolehan -->
-                                            <!-- Disediakan Untuk PTJ -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 d-flex justify-content-end">
-                                                        <label for="" class="">Disediakan Untuk PTJ <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-10">
-                                                        <div class="input-group">
-                                                            <select class="form-control" name="">
-                                                                <option value="">BAHAGIAN PENTADBIRAN - CAWANNGAN KEWANGAN -
-                                                                    KEMENTERIAN KEWANGAN</option>
-                                                            </select>
-                                                            <span class="input-group-text"><i
-                                                                    class="bx bx-search-alt"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Disediakan Untuk PTJ -->
-                                            <!-- No. Rujukan Fail -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 d-flex justify-content-end">
-                                                        <label for="" class="">No. Rujukan Fail <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-10">
-                                                        <input class="form-control" type="text">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- No. Rujukan Fail -->
-                                            <!-- Tarikh Dicipta -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 d-flex justify-content-end">
-                                                        <label for="" class="">Tarikh Dicipta</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <input class="form-control" type="date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Tarikh Dicipta -->
-                                            <!-- Jumlah Harga Indikatif Jangkaan (RM) -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 text-end">
-                                                        <label for="" class="">Jumlah Harga Indikatif Jangkaan (RM) <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input class="form-control" type="number" name="">
-                                                    </div>
-                                                    <div class="col-md-2 text-end">                                                        
-                                                        <label for="" class="">Anggaran Jabatan <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="number" name="" class="form-control">
-                                                    </div>
-                                                    <div class="col-md-2 text-end">
-                                                        <label for="" class="">Sumber Peruntukan <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="sumberPeruntukan"
-                                                                id="pembangunan" checked>
-                                                            <label class="form-check-label" for="pembangunan">
-                                                                Pembangunan
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="sumberPeruntukan"
-                                                                id="mengurus">
-                                                            <label class="form-check-label" for="mengurus">
-                                                                Mengurus
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Jumlah Harga Indikatif Jangkaan (RM) -->
+                                            <!-- Zon / Lokasi -->
+
                                             
-                                            <!-- Sumber Peruntukan -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    
-                                                </div>
-                                            </div>
-                                            <!-- Sumber Peruntukan -->
-                                            <!-- Jenis Sebut Harga / Tender -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 text-end">
-                                                        <label for="" class=""> Jenis Tender/Sebut Harga <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <select class="form-control" name="">
-                                                            <option value="">Konvensional</option>
-                                                            <option value="">Reka & Bina</option>
-                                                            <option value="">Terhad</option>
-                                                        </select>
-    
-    
-                                                    </div>
-                                                    <div class="col-md-4 text-end">
-                                                        <label for="" class="">Terbuka Kepada <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="terbukaKepada"
-                                                                id="terbukaKepada1">
-                                                            <label class="form-check-label" for="terbukaKepada1">
-                                                                Bumiputra
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="terbukaKepada"
-                                                                id="terbukaKepada2" checked>
-                                                            <label class="form-check-label" for="terbukaKepada2">
-                                                                Semua
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                           
-                                                <div class="col-md-12 my-2">
-                                                    <div class="row">
-                                                        <div class="col-md-2 text-end">
-                                                            <label for="" class="">Zon / Lokasi</label>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="zonLokasi"
-                                                                    id="zonLokasi1">
-                                                                <label class="form-check-label" for="zonLokasi1">
-                                                                    Ya
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="zonLokasi"
-                                                                    id="zonLokasi2" checked>
-                                                                <label class="form-check-label" for="zonLokasi2">
-                                                                    Tidak
-                                                                </label>
-                                                            </div>
-    
-                                                        </div>
-                                                        <div class="col-md-4 text-end ">
-                                                            <label for="" class="">Taklimat Tender / Lawatan Tapak&nbsp;<span
-                                                                    class="text-danger">*</span></label>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="taklimat"
-                                                                    id="ada" checked>
-                                                                <label class="form-check-label" for="ada">
-                                                                    Ada
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="taklimat"
-                                                                    id="tidak">
-                                                                <label class="form-check-label" for="tidak">
-                                                                    Tidak
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                               <!-- Lokaliti Penilaian -->
+                                            <!-- Lokaliti Penilaian -->
                                             <div class="col-md-12 my-2">
                                                 <div class="row">
                                                     <div class="col-md-2 text-end">
@@ -1420,121 +1418,90 @@
                                                             <option value=""></option>
                                                         </select>
                                                     </div>
-                                                    
-                                                   
+                                                    <div class="col-md-4 text-end">
+                                                        <label for="" class="">Skop Kerja <span
+                                                                class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <select class="form-control" name="">
+                                                            <option value="">Bangunan</option>
+                                                            <option value="">Kejuruteraan Awam</option>
+                                                            <option value="">Mekanikal & Elektrikal</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- Lokaliti Penilaian -->
-                                            
-                                            <!-- Jenis Kontrak -->
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 text-end">
-                                                        <label for="" class="">Jenis Kontrak <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <select class="form-control" name="">
-                                                            <option value="">Kementerian</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-4 d-flex justify-content-end">
-                                                        <label for="" class="">Kategori Perolehan <span
-                                                                class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <select class="form-control" name="">
-                                                            <option value="">ICT</option>
-                                                        </select>
-                                                    </div>
-                                                    
-                                                </div>
-                                            </div>
-                                            <!-- Jenis Kontrak -->
 
-                                     
-                                            
-                                            <!-- No. Kontrak Sedia Ada (Jika Ada) -->
+
                                             <!-- Jenis Pemenuhan -->
                                             <div class="col-md-12 my-2">
                                                 <div class="row">
-                                                    <div class="col-md-2 d-flex justify-content-end">
-                                                        <label for="" class="">Jenis Pemenuhan <span
-                                                                class="text-danger">*</span></label>
+                                                    <div class="col-md-2 text-end">
+                                                        <label class="">Jenis Pemenuhan <span class="text-danger">*</span></label>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <select class="form-control" name="">
                                                             <option value="">Bermasa (Bila Perlu)</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4 d-flex justify-content-end">
-                                                        <label for="" class="">No. Kontrak Sedia Ada (Jika Ada)</label>
+                                                    <div class="col-md-4 text-end">
+                                                        <label class="">Tempoh Siap Maksima</label>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <input class="form-control" type="number" name="">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input class="form-control" type="text" name="">
+                                                        <select class="form-control" name="">
+                                                            <option value="bulan">Bulan</option>
+                                                            <option value="minggu">Minggu</option>
+                                                        </select>
                                                     </div>
-
-                                                    
                                                 </div>
                                             </div>
+                                            
                                             <!-- Jenis Pemenuhan -->
-                                        
-                                            <!-- Kelulusan Spesifikasi Daripada Kementerian -->
+                                           
+                                            <!-- Penghantaran Fizikal -->
                                             <div class="col-md-12 my-2">
                                                 <div class="row">
                                                     <div class="col-md-2 text-end">
-                                                        <label for="" class="">Kelulusan Spesifikasi Daripada Kementerian
-                                                            <span class="text-danger">*</span></label>
+                                                        <label for="" class="">Jawatan Spesifikasi&nbsp;<span 
+                                                            class="text-danger">*</span></span></label>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="kelulusanSpesifikasiDaripadaKementerian"
-                                                                id="kelulusanSpesifikasiDaripadaKementerian1">
-                                                            <label class="form-check-label"
-                                                                for="kelulusanSpesifikasiDaripadaKementerian1">
+                                                            <input class="form-check-input" type="radio" name="jawatanSpek"
+                                                                id="ya">
+                                                            <label class="form-check-label" for="ya">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="kelulusanSpesifikasiDaripadaKementerian"
-                                                                id="kelulusanSpesifikasiDaripadaKementerian2" checked>
-                                                            <label class="form-check-label"
-                                                                for="kelulusanSpesifikasiDaripadaKementerian2">
+                                                            <input class="form-check-input" type="radio" name="jawatanSpek"
+                                                                id="tidak" checked>
+                                                            <label class="form-check-label" for="tidak">
                                                                 Tidak
                                                             </label>
                                                         </div>
-                                                        
+
                                                     </div>
-                                                    <div class="col-md-4 d-flex justify-content-end">
-                                                        <label for="" class="">Tempoh Kontrak / Penyiapan (Bulan)</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input class="form-control" type="number" name="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                           
-                                            <div class="col-md-12 my-2">
-                                                <div class="row">
-                                                    <div class="col-md-2 text-end">
-                                                        <label for="" class="">Penghantaran Fizikal <span
+                                                    <div class="col-md-4 text-end ">
+                                                        <label for="" class="">Penghantaran Fizikal&nbsp;<span
                                                                 class="text-danger">*</span></label>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="penghantaranFizikal" id="penghantaranFizikal1"
-                                                                checked>
-                                                            <label class="form-check-label" for="penghantaranFizikal1">
+                                                            <input class="form-check-input" type="radio" name="penghantaranFizikal"
+                                                                id="ya" checked>
+                                                            <label class="form-check-label" for="ya">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="penghantaranFizikal" id="penghantaranFizikal2">
-                                                            <label class="form-check-label" for="penghantaranFizikal2">
+                                                            <input class="form-check-input" type="radio" name="penghantaranFizikal"
+                                                                id="tidak">
+                                                            <label class="form-check-label" for="tidak">
                                                                 Tidak
                                                             </label>
                                                         </div>
@@ -1545,326 +1512,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                {{-- Form Khusus untuk Kerja --}}
-                                <div id="kerjaForm" style="display: none;">
-                                    <!-- Tajuk Perolehan -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row">
-                                            <div class="col-md-2 text-end">
-                                                <label for="" class="">Tajuk Perolehan <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name=""></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Tajuk Perolehan -->
-                                    <!-- Disediakan Untuk PTJ -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row">
-                                            <div class="col-md-2 text-end">
-                                                <label for="" class="">Disediakan Untuk PTJ <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <div class="input-group">
-                                                    <select class="form-control" name="">
-                                                        <option value="">BAHAGIAN PENTADBIRAN - CAWANNGAN KEWANGAN -
-                                                            KEMENTERIAN KEWANGAN</option>
-                                                    </select>
-                                                    <span class="input-group-text"><i
-                                                            class="bx bx-search-alt"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Disediakan Untuk PTJ -->
-                                    <!-- No. Rujukan Fail -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row">
-                                            <div class="col-md-2 text-end">
-                                                <label for="" class="">No. Rujukan Fail <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- No. Rujukan Fail -->
-                                    <!-- No. Tender/Sebut Harga -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row">
-                                            <div class="col-md-2 text-end">
-                                                <label for="" class="">No. Tender/Sebut Harga <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- No. Tender/Sebut Harga -->
-                                    <!-- Tarikh Dicipta -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row ">
-                                            <div class="col-md-2 text-end">
-                                                <label for="" class="">Tarikh Dicipta</label>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <input class="form-control" type="date">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Tarikh Dicipta -->
-                                    <!-- Harga Indikatif Jabatan (RM) -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row ">
-                                            <div class="col-md-2 text-end">
-                                                <label class="">Harga Indikatif Jabatan (RM) <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input class="form-control" type="number" name="">
-                                            </div>
-                                            <div class="col-md-4 text-end">
-                                                <label class="">Sumber Peruntukan <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="formRadios"
-                                                        id="formRadios1" checked>
-                                                    <label class="form-check-label"
-                                                        for="formRadios1">Pembangunan</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="formRadios"
-                                                        id="formRadios2">
-                                                    <label class="form-check-label" for="formRadios2">Mengurus</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="formRadios"
-                                                        id="formRadios3">
-                                                    <label class="form-check-label" for="formRadios3">Lain-Lain</label>
-                                                </div>
-                                                <!-- Textbox for "Lain-Lain", hidden initially -->
-                                                <div id="lainLainInput" class="mt-2" style="display: none;">
-                                                    <input type="text" class="form-control" placeholder="Sila nyatakan">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Harga Indikatif Jabatan (RM) -->
-                                    <!-- Anggaran Jabatan -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row ">
-                                            <div class="col-md-2 text-end">
-                                                <label for="" class="">Anggaran Jabatan (RM) <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input class="form-control" type="number" name="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Anggaran Jabatan -->
-
-                                    <!-- Jenis Sebut Harga / Tender -->
-                                    <div class="col-md-12 my-2">
-                                        <div class="row">
-                                            <div class="col-md-2 text-end">
-                                                <label for="" class=""> Jenis Tender/Sebut Harga <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <select class="form-control" name="">
-                                                    <option value="">Konvensional</option>
-                                                    <option value="">Reka & Bina</option>
-                                                    <option value="">Terhad</option>
-                                                </select>
-
-
-                                            </div>
-                                            <div class="col-md-4 text-end">
-                                                <label for="" class="">Terbuka Kepada <span
-                                                        class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="terbukaKepada"
-                                                        id="terbukaKepada1">
-                                                    <label class="form-check-label" for="terbukaKepada1">
-                                                        Bumiputra
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="terbukaKepada"
-                                                        id="terbukaKepada2" checked>
-                                                    <label class="form-check-label" for="terbukaKepada2">
-                                                        Semua
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Jenis Sebut Harga / Tender -->
-
-                                        <!-- Zon / Lokasi -->
-                                        <div class="col-md-12 my-2">
-                                            <div class="row">
-                                                <div class="col-md-2 text-end">
-                                                    <label for="" class="">Zon / Lokasi</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="zonLokasi"
-                                                            id="zonLokasi1">
-                                                        <label class="form-check-label" for="zonLokasi1">
-                                                            Ya
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="zonLokasi"
-                                                            id="zonLokasi2" checked>
-                                                        <label class="form-check-label" for="zonLokasi2">
-                                                            Tidak
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-4 text-end ">
-                                                    <label for="" class="">Taklimat Tender / Lawatan Tapak&nbsp;<span
-                                                            class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="taklimat"
-                                                            id="ada" checked>
-                                                        <label class="form-check-label" for="ada">
-                                                            Ada
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="taklimat"
-                                                            id="tidak">
-                                                        <label class="form-check-label" for="tidak">
-                                                            Tidak
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Zon / Lokasi -->
-
-                                        
-                                        <!-- Lokaliti Penilaian -->
-                                        <div class="col-md-12 my-2">
-                                            <div class="row">
-                                                <div class="col-md-2 text-end">
-                                                    <label for="" class="">Lokaliti Liputan</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <select class="form-control" name="">
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4 text-end">
-                                                    <label for="" class="">Skop Kerja <span
-                                                            class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <select class="form-control" name="">
-                                                        <option value="">Bangunan</option>
-                                                        <option value="">Kejuruteraan Awam</option>
-                                                        <option value="">Mekanikal & Elektrikal</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Lokaliti Penilaian -->
-
-
-                                        <!-- Jenis Pemenuhan -->
-                                        <div class="col-md-12 my-2">
-                                            <div class="row">
-                                                <div class="col-md-2 text-end">
-                                                    <label class="">Jenis Pemenuhan <span class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <select class="form-control" name="">
-                                                        <option value="">Bermasa (Bila Perlu)</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4 text-end">
-                                                    <label class="">Tempoh Siap Maksima</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <input class="form-control" type="number" name="">
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <select class="form-control" name="">
-                                                        <option value="bulan">Bulan</option>
-                                                        <option value="minggu">Minggu</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Jenis Pemenuhan -->
-                                       
-                                        <!-- Penghantaran Fizikal -->
-                                        <div class="col-md-12 my-2">
-                                            <div class="row">
-                                                <div class="col-md-2 text-end">
-                                                    <label for="" class="">Jawatan Spesifikasi&nbsp;<span 
-                                                        class="text-danger">*</span></span></label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="jawatanSpek"
-                                                            id="ya">
-                                                        <label class="form-check-label" for="ya">
-                                                            Ya
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="jawatanSpek"
-                                                            id="tidak" checked>
-                                                        <label class="form-check-label" for="tidak">
-                                                            Tidak
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-4 text-end ">
-                                                    <label for="" class="">Penghantaran Fizikal&nbsp;<span
-                                                            class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="penghantaranFizikal"
-                                                            id="ya" checked>
-                                                        <label class="form-check-label" for="ya">
-                                                            Ya
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="penghantaranFizikal"
-                                                            id="tidak">
-                                                        <label class="form-check-label" for="tidak">
-                                                            Tidak
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Penghantaran Fizikal -->
-                                    </div>
-                                </div>
-
-                                <div class="row">
+                                <div class="row mb-4">
                                     <div class="col-12 d-flex justify-content-between">
                                         <div class="left"></div>
                                         <div class="right">
@@ -1974,20 +1622,18 @@
                 </div>
             </div> <!-- end col -->
         </div> <!-- end row -->
+
         <script>
-    document.getElementById('kategoriJenis').addEventListener('change', function () {
-        const selected = this.value;
-
-        const ciptaTenderForm = document.getElementById('ciptaTenderForm');
-        const kerjaForm = document.getElementById('kerjaForm');
-
-        if (selected === 'kerja') {
-            ciptaTenderForm.style.display = 'none';
-            kerjaForm.style.display = 'block';
-        } else {
-            ciptaTenderForm.style.display = 'block';
-            kerjaForm.style.display = 'none';
-        }
-    });
-</script>
+            // Show/hide textbox when "Lain-Lain" is selected
+            document.querySelectorAll('input[name="formRadios"]').forEach((elem) => {
+                elem.addEventListener("change", function () {
+                    const lainLainInput = document.getElementById("lainLainInput");
+                    if (document.getElementById("formRadios3").checked) {
+                        lainLainInput.style.display = "block";
+                    } else {
+                        lainLainInput.style.display = "none";
+                    }
+                });
+            });
+        </script>
 @endsection

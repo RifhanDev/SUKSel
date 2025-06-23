@@ -13,940 +13,1079 @@
 @section('content')
     <style>
         #datatable-buttons th {
-            background-color: #405393 !important; 
+            background-color: #405393 !important;
             color: white !important;
             border: 1px solid #848484;
         }
+
         .btn-primary {
             background: #405189;
         }
+
         .card-title-grey {
             background: #D9D9D9;
             padding: 5px 15px;
         }
+
         hr {
-            border:1px solid #E9EBEC;
+            border: 1px solid #E9EBEC;
         }
 
         /* test */
-            .select2-container--default .select2-selection--single {
-                background-color: white !important;
-                border: 1px solid #aaa !important;
-                border-radius: 4px !important;
-                cursor: text !important;
-                padding-top: 5px !important;
-                padding-bottom: 5px !important;
-                padding-left: 8px !important;
-                position: relative !important;
-            }
-            .select2-container .select2-selection--single {
-                box-sizing: border-box !important;
-                cursor: pointer !important;
-                display: block !important;
-                min-height: 37.5px !important;
-                user-select: none !important;
-                -webkit-user-select: none !important;
-            }
-            .select2-search__field::-webkit-input-placeholder, .select2-search__field::placeholder {font-family: "Poppins", sans-serif;}
-            .select2-container--default .select2-selection--single .select2-selection__choice {
-                /* background-color: #405189 !important; */
-                /* border-color: #405189 !important; */
-                background-color: white !important;
-                border-color: #black !important;
-            }
-            .select2-container--default .select2-selection--single .select2-selection__choice__display {
-                cursor: default;
-                padding-left: 2px;
-                padding-right: 5px;
-                color: black;
-            }
+        .select2-container--default .select2-selection--single {
+            background-color: white !important;
+            border: 1px solid #aaa !important;
+            border-radius: 4px !important;
+            cursor: text !important;
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+            padding-left: 8px !important;
+            position: relative !important;
+        }
 
-            .attachment {
-                cursor: pointer;
-                min-height: 90px;
-                border: 2px dashed var(--vz-border-color);
-                background: var(--vz-secondary-bg);
-                border-radius: 6px;
-            }
-            .attachment .attachment-message {
-                text-align: center;
-                font-size: 24px;
+        .select2-container .select2-selection--single {
+            box-sizing: border-box !important;
+            cursor: pointer !important;
+            display: block !important;
+            min-height: 37.5px !important;
+            user-select: none !important;
+            -webkit-user-select: none !important;
+        }
+
+        .select2-search__field::-webkit-input-placeholder,
+        .select2-search__field::placeholder {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__choice {
+            /* background-color: #405189 !important; */
+            /* border-color: #405189 !important; */
+            background-color: white !important;
+            border-color: #black !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__choice__display {
+            cursor: default;
+            padding-left: 2px;
+            padding-right: 5px;
+            color: black;
+        }
+
+        .attachment {
+            cursor: pointer;
+            min-height: 90px;
+            border: 2px dashed var(--vz-border-color);
+            background: var(--vz-secondary-bg);
+            border-radius: 6px;
+        }
+
+        .attachment .attachment-message {
+            text-align: center;
+            font-size: 24px;
+            width: 100%;
+            margin: 1em 0;
+        }
+
+        .attachment-preview {
+            border: var(--vz-border-width) var(--vz-border-style) var(--vz-border-color) !important;
+            border-radius: var(--vz-border-radius) !important;
+        }
+
+        .dropzone {
+            width: auto;
+            height: 150px;
+            min-height: 0px !important;
+        }
+
+        @media screen and (max-width: 3000px) {
+            .agency-name {
+                display: flex;
                 width: 100%;
-                margin: 1em 0;
-            }
-            .attachment-preview {
-                border: var(--vz-border-width) var(--vz-border-style) var(--vz-border-color) !important;
-                border-radius: var(--vz-border-radius) !important;  
+                height: 40px;
+                margin-right: 10px;
             }
 
-            .dropzone {
-                width: auto;
-                height: 150px;
-                min-height: 0px !important;
-            }
-            
-            @media screen and (max-width: 3000px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:290px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:280px;
-                    margin-right:100px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:200px;
-                    margin-right:110px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-                .btn-add-supplier-position{
-                    top: 74px;    
-                }
-                .btn-edit-supplier-position{
-                    top: 30px;   
-                }
-            }
-            @media screen and (max-width: 2300px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:260px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:250px;
-                    margin-right:100px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:160px;
-                    margin-right:110px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 2200px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:200px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:200px;
-                    margin-right:100px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:150px;
-                    margin-right:110px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 2000px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:190px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:190px;
-                    margin-right:120px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:100px;
-                    margin-right:100px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 1870px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:180px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:190px;
-                    margin-right:120px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:100px;
-                    margin-right:100px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 1800px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:160px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:180px;
-                    margin-right:110px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:90px;
-                    margin-right:100px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }        
-            @media screen and (max-width: 1700px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:130px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:170px;
-                    margin-right:110px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:90px;
-                    margin-right:100px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 1660px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:120px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:180px;
-                    margin-right:110px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:90px;
-                    margin-right:100px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 1590px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:100px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:180px;
-                    margin-right:110px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:90px;
-                    margin-right:100px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 1520px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:90px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:160px;
-                    margin-right:110px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:80px;
-                    margin-right:110px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 1440px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:60px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:140px;
-                    margin-right:70px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:90px;
-                    margin-right:100px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }    
-            @media screen and (max-width: 1350px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:40px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:90px;
-                    margin-right:50px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:80px;
-                    margin-right:70px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }
-            @media screen and (max-width: 1240px) {
-                .agency-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-right:10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:60px;
-                    margin-right:50px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:70px;
-                    margin-right:70px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    width: 100%; 
-                    height: 40px;
-                }
-            }        
-            @media screen and (max-width: 1150px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    margin-right: 5px;
-                    font-size: 11px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                    font-size: 11px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:50px;
-                    margin-right:40px;
-                    font-size: 11px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:60px;
-                    margin-right:50px;
-                    font-size: 11px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 11px;
-                }
-            }
-            @media screen and (max-width: 1040px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    margin-right: 5px;
-                    font-size: 11px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                    font-size: 11px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:70px;
-                    margin-right:30px;
-                    font-size: 11px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:70px;
-                    margin-right:50px;
-                    font-size: 11px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 11px;
-                }
-            }
-            @media screen and (max-width: 950px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    margin-right: 5px;
-                    font-size: 11px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:20px;
-                    font-size: 11px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:70px;
-                    margin-right:30px;
-                    font-size: 11px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:70px;
-                    margin-right:50px;
-                    font-size: 11px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 11px;
-                }
-            }
-            @media screen and (max-width: 860px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    margin-right: 5px;
-                    font-size: 11px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                    font-size: 11px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:40px;
-                    margin-right:30px;
-                    font-size: 11px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:40px;
-                    margin-right:50px;
-                    font-size: 11px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 11px;
-                }
-            }
-            @media screen and (max-width: 786px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    font-size: 10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:20px;
-                    font-size: 10px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:10px;
-                    margin-right:10px;
-                    font-size: 10px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:10px;
-                    margin-right:20px;
-                    font-size: 10px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 10px;
-                }
-            }
-            @media screen and (max-width: 765px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    font-size: 10px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:20px;
-                    font-size: 10px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                    margin-right:10px;
-                    font-size: 10px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:40px;
-                    margin-right:20px;
-                    font-size: 10px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 10px;
-                }
-            }
-            @media screen and (max-width: 680px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    font-size: 9px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:20px;
-                    font-size: 9px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                    margin-right:10px;
-                    font-size: 9px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:40px;
-                    margin-right:20px;
-                    font-size: 9px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 9px;
-                }
-            }
-            @media screen and (max-width: 630px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    font-size: 9px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:20px;
-                    font-size: 9px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                    margin-right:10px;
-                    font-size: 9px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:40px;
-                    margin-right:20px;
-                    font-size: 9px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 9px;
-                }
-            }
-            @media screen and (max-width: 600px) {
-                .agency-name {
-                    display: flex;
-                    max-width: 200px;
-                    height: 40px;
-                    font-size: 9px;
-                }
-                .program-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:20px;
-                    font-size: 9px;
-                }
-                .expenses-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:30px;
-                    margin-right:10px;
-                    font-size: 9px;
-                }
-                .attachment-name {
-                    display: flex;
-                    width: 100%; 
-                    height: 40px;
-                    margin-left:40px;
-                    margin-right:20px;
-                    font-size: 9px;
-                }
-                .endorsement-name {
-                    display: flex;
-                    justify-content: flex-end;
-                    height: 40px;
-                    font-size: 9px;
-                }
-            }
-            @media screen and (max-width: 440px) {
-                .agency-name {
-                display: none;
-                }
-                .program-name {
-                    display: none;
-                }
-                .expenses-name {
-                    display: none;
-                }
-                .attachment-name {
-                    display: none;
-                }
-                .endorsement-name {
-                    display: none;
-                }
-            }
-            @media screen and (max-width: 400px) {
-                .agency-name {
-                display: none;
-                }
-                .program-name {
-                    display: none;
-                }
-                .expenses-name {
-                    display: none;
-                }
-                .attachment-name {
-                    display: none;
-                }
-                .endorsement-name {
-                    display: none;
-                }
-            }
-            @media screen and (max-width: 370px) {
-                .agency-name {
-                display: none;
-                }
-                .program-name {
-                    display: none;
-                }
-                .expenses-name {
-                    display: none;
-                }
-                .attachment-name {
-                    display: none;
-                }
-                .endorsement-name {
-                    display: none;
-                }
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 290px;
             }
 
-            #expenses-table tbody td:nth-child(2) {
-                margin-top: 20px;
-                height:255px;
-                display: block;
-                max-height: 400px;
-                overflow-y: auto;
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 280px;
+                margin-right: 100px;
             }
-            
-            .dt-center {
-                text-align: center;
-                vertical-align: middle;
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 200px;
+                margin-right: 110px;
             }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+
+            .btn-add-supplier-position {
+                top: 74px;
+            }
+
+            .btn-edit-supplier-position {
+                top: 30px;
+            }
+        }
+
+        @media screen and (max-width: 2300px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 260px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 250px;
+                margin-right: 100px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 160px;
+                margin-right: 110px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 2200px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 200px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 200px;
+                margin-right: 100px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 150px;
+                margin-right: 110px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 2000px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 190px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 190px;
+                margin-right: 120px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 100px;
+                margin-right: 100px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1870px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 180px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 190px;
+                margin-right: 120px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 100px;
+                margin-right: 100px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1800px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 160px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 180px;
+                margin-right: 110px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 90px;
+                margin-right: 100px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1700px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 130px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 170px;
+                margin-right: 110px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 90px;
+                margin-right: 100px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1660px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 120px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 180px;
+                margin-right: 110px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 90px;
+                margin-right: 100px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1590px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 100px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 180px;
+                margin-right: 110px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 90px;
+                margin-right: 100px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1520px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 90px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 160px;
+                margin-right: 110px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 80px;
+                margin-right: 110px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1440px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 60px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 140px;
+                margin-right: 70px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 90px;
+                margin-right: 100px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1350px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 40px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 90px;
+                margin-right: 50px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 80px;
+                margin-right: 70px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1240px) {
+            .agency-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 60px;
+                margin-right: 50px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 70px;
+                margin-right: 70px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1150px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                margin-right: 5px;
+                font-size: 11px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+                font-size: 11px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 50px;
+                margin-right: 40px;
+                font-size: 11px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 60px;
+                margin-right: 50px;
+                font-size: 11px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 11px;
+            }
+        }
+
+        @media screen and (max-width: 1040px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                margin-right: 5px;
+                font-size: 11px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+                font-size: 11px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 70px;
+                margin-right: 30px;
+                font-size: 11px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 70px;
+                margin-right: 50px;
+                font-size: 11px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 11px;
+            }
+        }
+
+        @media screen and (max-width: 950px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                margin-right: 5px;
+                font-size: 11px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 20px;
+                font-size: 11px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 70px;
+                margin-right: 30px;
+                font-size: 11px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 70px;
+                margin-right: 50px;
+                font-size: 11px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 11px;
+            }
+        }
+
+        @media screen and (max-width: 860px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                margin-right: 5px;
+                font-size: 11px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+                font-size: 11px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 40px;
+                margin-right: 30px;
+                font-size: 11px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 40px;
+                margin-right: 50px;
+                font-size: 11px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 11px;
+            }
+        }
+
+        @media screen and (max-width: 786px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                font-size: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 20px;
+                font-size: 10px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: 10px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 10px;
+                margin-right: 20px;
+                font-size: 10px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 10px;
+            }
+        }
+
+        @media screen and (max-width: 765px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                font-size: 10px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 20px;
+                font-size: 10px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+                margin-right: 10px;
+                font-size: 10px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 40px;
+                margin-right: 20px;
+                font-size: 10px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 10px;
+            }
+        }
+
+        @media screen and (max-width: 680px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                font-size: 9px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 20px;
+                font-size: 9px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+                margin-right: 10px;
+                font-size: 9px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 40px;
+                margin-right: 20px;
+                font-size: 9px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 9px;
+            }
+        }
+
+        @media screen and (max-width: 630px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                font-size: 9px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 20px;
+                font-size: 9px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+                margin-right: 10px;
+                font-size: 9px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 40px;
+                margin-right: 20px;
+                font-size: 9px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 9px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .agency-name {
+                display: flex;
+                max-width: 200px;
+                height: 40px;
+                font-size: 9px;
+            }
+
+            .program-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 20px;
+                font-size: 9px;
+            }
+
+            .expenses-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 30px;
+                margin-right: 10px;
+                font-size: 9px;
+            }
+
+            .attachment-name {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-left: 40px;
+                margin-right: 20px;
+                font-size: 9px;
+            }
+
+            .endorsement-name {
+                display: flex;
+                justify-content: flex-end;
+                height: 40px;
+                font-size: 9px;
+            }
+        }
+
+        @media screen and (max-width: 440px) {
+            .agency-name {
+                display: none;
+            }
+
+            .program-name {
+                display: none;
+            }
+
+            .expenses-name {
+                display: none;
+            }
+
+            .attachment-name {
+                display: none;
+            }
+
+            .endorsement-name {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .agency-name {
+                display: none;
+            }
+
+            .program-name {
+                display: none;
+            }
+
+            .expenses-name {
+                display: none;
+            }
+
+            .attachment-name {
+                display: none;
+            }
+
+            .endorsement-name {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 370px) {
+            .agency-name {
+                display: none;
+            }
+
+            .program-name {
+                display: none;
+            }
+
+            .expenses-name {
+                display: none;
+            }
+
+            .attachment-name {
+                display: none;
+            }
+
+            .endorsement-name {
+                display: none;
+            }
+        }
+
+        #expenses-table tbody td:nth-child(2) {
+            margin-top: 20px;
+            height: 255px;
+            display: block;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .dt-center {
+            text-align: center;
+            vertical-align: middle;
+        }
+
         /* test */
     </style>
 
@@ -967,7 +1106,7 @@
                     <b>PTJ</b>
                 </div>
                 <div class="col-10 text-center">
-                BAHAGIAN PENTADBIRAN - CAWANGAN KEWANGAN - KEMENTERIAN KEWANGAN
+                    BAHAGIAN PENTADBIRAN - CAWANGAN KEWANGAN - KEMENTERIAN KEWANGAN
                 </div>
             </div>
         </div>
@@ -977,7 +1116,7 @@
                     <b>Status</b>
                 </div>
                 <div class="col-9 text-center">
-                Menunggu Penyerahan Sebut Harga / Tender
+                    Menunggu Penyerahan Sebut Harga / Tender
                 </div>
             </div>
         </div>
@@ -993,27 +1132,22 @@
 
                     <div class="row my-2">
                         <div class="col-7 d-flex justify-content-center">
-                            <div class="row">
+                            <div class="row text-center w-100">
                                 <div class="col-12">
                                     <b>Tender Prices Distribution Curve</b>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <b>*Graph Here*</b>
+                                <div class="col-12 my-3">
+                                    <canvas id="tenderPriceChart" height="200"></canvas>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-12">
                                     <b>Price Classification: % of Mean</b>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-5">
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100" 
-                                data-table-sort="id"
-                                data-table-order="asc"
-                                data-page="1">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100"
+                                data-table-sort="id" data-table-order="asc" data-page="1">
                                 <thead>
                                     <tr>
                                         <th class="text-center" colspan="2">Frequency Distribution</th>
@@ -1076,10 +1210,10 @@
                             </table>
                         </div>
                     </div>
-                    
+
                     <div class="row my-2">
                         <div class="col-6">
-                            <table class="table table-bordered" >
+                            <table class="table table-bordered">
                                 <tbody>
                                     <tr>
                                         <td>Anggaran Jambatan, (AJ)</td>
@@ -1102,17 +1236,17 @@
                             </div>
                             <hr>
                             <div class="card-body">
-                                Sesuatu harga tender dianggap "freak" dan secara automatik tidak diambil kira sekiranya tahap 'significance'nya (Alfa) kurang daripada 0.01, iaitu Z-score nya melebihi +2.33 atau kurang dari -2.33.
+                                Sesuatu harga tender dianggap "freak" dan secara automatik tidak diambil kira sekiranya
+                                tahap 'significance'nya (Alfa) kurang daripada 0.01, iaitu Z-score nya melebihi +2.33 atau
+                                kurang dari -2.33.
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row my-2">
                         <div class="col-6">
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100" 
-                                data-table-sort="id"
-                                data-table-order="asc"
-                                data-page="1">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100"
+                                data-table-sort="id" data-table-order="asc" data-page="1">
                                 <thead>
                                     <tr>
                                         <th class="text-center w-50">Statistical Attribute</th>
@@ -1144,10 +1278,8 @@
                             </table>
                         </div>
                         <div class="col-6">
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100" 
-                                data-table-sort="id"
-                                data-table-order="asc"
-                                data-page="1">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100"
+                                data-table-sort="id" data-table-order="asc" data-page="1">
                                 <thead>
                                     <tr>
                                         <th class="text-center" colspan="2">Penentuan Harga Cutoff</th>
@@ -1159,12 +1291,16 @@
                                         <td class="text-center" style="vertical-align: middle;">OK</td>
                                     </tr>
                                     <tr>
-                                        <td>Nilai 'Cut-off' :<br> Mean -X% Mean<br>or Mean - Stdev<br>(yang mana lebih tinggi)</td>
-                                        <td class="text-center" style="vertical-align: middle;">$ 685,644.56<br>$ 708,572.41</td>
+                                        <td>Nilai 'Cut-off' :<br> Mean -X% Mean<br>or Mean - Stdev<br>(yang mana lebih
+                                            tinggi)</td>
+                                        <td class="text-center" style="vertical-align: middle;">$ 685,644.56<br>$ 708,572.41
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Cut-off Bagi 'Builder's Works sahaja (tanpa PCP)<br>Cut-off Bagi Tender (termasuk PCP)</td>
-                                        <td class="text-center" style="vertical-align: middle;">$ 685,644.56<br>$ 708,572.41</td>
+                                        <td>Cut-off Bagi 'Builder's Works sahaja (tanpa PCP)<br>Cut-off Bagi Tender
+                                            (termasuk PCP)</td>
+                                        <td class="text-center" style="vertical-align: middle;">$ 685,644.56<br>$ 708,572.41
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Haraa CUT-OFF (rounded down) YANG DITETAPKAN</td>
@@ -1177,10 +1313,8 @@
 
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center">
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100" 
-                                data-table-sort="id"
-                                data-table-order="asc"
-                                data-page="1">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100"
+                                data-table-sort="id" data-table-order="asc" data-page="1">
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="vertical-align: middle;">Bil</th>
@@ -1190,7 +1324,8 @@
                                         <th class="text-center" style="vertical-align: middle;">Z-score</th>
                                         <th class="text-center" style="vertical-align: middle;">%BWAJ</th>
                                         <th class="text-center" style="vertical-align: middle;">%BWAM</th>
-                                        <th class="text-center" style="vertical-align: middle;">Pilih <input type="checkbox" name="" id="" class="form-check-input"></th>
+                                        <th class="text-center" style="vertical-align: middle;">Pilih <input type="checkbox"
+                                                name="" id="" class="form-check-input"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1288,7 +1423,7 @@
                             </table>
                         </div>
                     </div>
-                    
+
                     <div class="row my-2">
                         <div class="col-12 d-flex justify-content-between">
                             <div class="left"></div>
@@ -1305,4 +1440,46 @@
         </div>
     </div>
 
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById('tenderPriceChart').getContext('2d');
+            const tenderPriceChart = new Chart(ctx, {
+                type: 'line',
+            data: {
+                labels: ['less', '90%', '80%', '70%', '60%', '50%', '40%', '30%', '20%', '10%', '0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', 'More'],
+            datasets: [{
+                label: 'Frequency',
+            data: [0, 0, 0, 0, 0, 0, 1, 2, 4, 5, 4, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+            borderColor: 'blue',
+            backgroundColor: 'transparent',
+            pointBackgroundColor: 'blue',
+            tension: 0.4,
+            fill: false
+                }]
+            },
+            options: {
+                plugins: {
+                legend: {display: false },
+            tooltip: {enabled: false }
+                },
+            scales: {
+                y: {
+                title: {
+                display: true,
+            text: 'Frequency'
+                        },
+            beginAtZero: true
+                    },
+            x: {
+                title: {
+                display: false
+                        }
+                    }
+                }
+            }
+        });
+    });
+    </script>
 @endsection
+
+

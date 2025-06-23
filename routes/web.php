@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/cipta-tender', [TenderController::class, 'getCiptaTender'])->name('getCiptaTender');
     // Route::get('/cipta-tender', function () {return view('tender.cipta-tender');});
+    Route::get('/cipta-tenderKerja', [TenderController::class, 'getCiptaTenderKerja']);
+
 
 
     Route::prefix('perlantikan-jawatankuasa')->group(function () {
@@ -71,6 +73,29 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kelulusan', function () {return view('tender.kelulusan');})->name('getKelulusan');
     Route::get('/penyediaan-iklan', function () {return view('tender.penyediaan-iklan');})->name('PenyediaanIklan');
     Route::get('/penyediaan-dokumen-tender-tawaran', function () {return view('tender.penyediaan-dokumen-tender-tawaran');})->name('dokumenTenderTawaran');
+    Route::get('/butiran-dilihat', function () {return view('syarikat.butiran-dilihat');})->name('butiran-dilihat');
+    Route::get('/butiran-syarikat', function () {return view('syarikat.butiran-syarikat');})->name('butiran-syarikat');
+    Route::get('/checkout', function () {return view('syarikat.checkout');})->name('checkout');
+    Route::get('/lawatan-tapak-syarikat', function () {return view('syarikat.lawatan-tapak-syarikat');})->name('lawatan-tapak-syarikat');
+    Route::get('/kod-bidang', function () {return view('syarikat.kod-bidang');})->name('kod-bidang');
+    Route::get('/senarai-semak-dokumen', function () {return view('syarikat.senarai-semak-dokumen');})->name('senarai-semak-dokumen');
+    Route::get('/maklumat-ralat', function () {return view('syarikat.maklumat-ralat');})->name('maklumat-ralat');
+    Route::get('/pegawai-bertanggungjawab', function () {return view('syarikat.pegawai-bertanggungjawab');})->name('pegawai-bertanggungjawab');
+    Route::get('/penilaian-prestasi-syarikat', function () {return view('syarikat.penilaian-prestasi-syarikat');})->name('penilaian-prestasi-syarikat');
+    Route::get('/kertas-cadangan-teknikal', function () {return view('syarikat.kertas-cadangan-teknikal');})->name('kertas-cadangan-teknikal');
+    Route::get('/cadangan-teknikal-spek', function () {return view('syarikat.cadangan-teknikal-spek');})->name('cadangan-teknikal-spek');
+    Route::get('/kertas-cadangan-kewangan', function () {return view('syarikat.kertas-cadangan-kewangan');})->name('kertas-cadangan-kewangan');
+    Route::get('/cadangan-kewangan-harga_tawaran', function () {return view('syarikat.cadangan-kewangan-harga_tawaran');})->name('cadangan-kewangan-harga_tawaran');
+    Route::get('/perakuan', function () {return view('syarikat.perakuan');})->name('perakuan');
+    Route::get('/surat-akuan-pembida', function () {return view('syarikat.surat-akuan-pembida');})->name('surat-akuan-pembida');
+    Route::get('/maklumat-umum', function () {return view('syarikat.maklumat-umum');})->name('maklumat-umum');
+    Route::get('/pengesahan-kehadiran', function () {return view('urusetia.pengesahan-kehadiran');})->name('pengesahan-kehadiran');
+    Route::get('/teknikal', function () {return view('penilaian.teknikal');})->name('teknikal');
+    Route::get('/kewangan', function () {return view('penilaian.kewangan');})->name('kewangan');
+    Route::get('/1-tier', function () {return view('penilaian.1-tier');})->name('1-tier');
+    Route::get('/kertas-taklimat-pengesyoran', function () {return view('urusetia.kertas-taklimat-pengesyoran');})->name('kertas-taklimat-pengesyoran');
+
+
 
 
 

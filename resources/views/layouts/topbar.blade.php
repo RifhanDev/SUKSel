@@ -4,19 +4,19 @@
             <div class="navbar-brand-box" style="background: #993B3B">
                 <a href="index" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('build/images/logo.svg') }}" alt="" height="22">
+                        <img src="{{ URL::asset('/logo.png') }}" alt="" height="80">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="17">
+                        <img src="{{ URL::asset('/logo.png') }}" alt="" height="80">
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('build/images/logo-light.svg') }}" alt="" height="22">
+                        <img src="{{ URL::asset('/logo.png') }}" alt="" height="60">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="19">
+                        <img src="{{ URL::asset('/logo.png') }}" alt="" height="60">
                     </span>
                 </a>
             </div>
