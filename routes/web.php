@@ -94,6 +94,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kewangan', function () {return view('penilaian.kewangan');})->name('kewangan');
     Route::get('/1-tier', function () {return view('penilaian.1-tier');})->name('1-tier');
     Route::get('/kertas-taklimat-pengesyoran', function () {return view('urusetia.kertas-taklimat-pengesyoran');})->name('kertas-taklimat-pengesyoran');
+    Route::get('/cipta-projek', function () {return view('pembelian-terus.cipta-projek');})->name('cipta-projek');
+    Route::get('/sebut-harga', function () {return view('pembelian-terus.sebut-harga');})->name('sebut-harga');
+    Route::get('/sebut-harga-content', function () {return view('pembelian-terus.sebut-harga-content');})->name('sebut-harga-content');
+    Route::get('/cut-off-pb', function () {return view('pembelian-terus.cut-off-pb');})->name('cut-off-pb');
 
 
 

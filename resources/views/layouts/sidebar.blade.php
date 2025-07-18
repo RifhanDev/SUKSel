@@ -220,6 +220,16 @@
                         <li><a href="{{ route('1-tier') }}" key="t-p-list">1-Tier</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <span key="t-projects">Pembelian Terus</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('cipta-projek') }}" key="t-p-grid">Cipta Projek Pembelian Terus</a></li>
+                        <li><a href="{{ route('sebut-harga') }}">Sebut Harga Pembelian Terus</a></li>
+                        <li><a href="{{ route('cut-off-pb') }}" key="t-p-list">Cut-Off</a></li>
+                    </ul>
+                </li>
                 
 
 

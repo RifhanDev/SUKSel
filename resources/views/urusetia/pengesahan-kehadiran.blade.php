@@ -101,9 +101,9 @@
         </div>
 
         <div class="mt-3 text-end">
-        <!-- Button trigger modal -->
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
-    </div>
+            <!-- Button trigger modal -->
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
+        </div>
 
         <div class="mt-4 d-flex justify-content-end gap-2">
             <button class="btn btn-info">Laporan</button>
