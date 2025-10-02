@@ -1333,6 +1333,41 @@
                                 </div>
                             </div>
 
+                            <div class="row mt-4 justify-content-center">
+                                <div class="col-12">
+                                    <h4 class="card-title card-title-grey">SYARAT KHAS</h4>
+                                </div>
+                            </div>
+                            <div class="row my-1 align-items-start">
+                                <!-- label column -->
+                                <div class="col-md-4 d-flex justify-content-end">
+                                    <label for="dokumenName" class="col-form-label text-end">Dokumen</label>
+                                </div>
+
+                                <!-- input + buttons column -->
+                                <div class="col-md-4">
+                                    <div class="d-flex">
+                                        <!-- 1. Nama Dokumen -->
+                                        <input type="text" id="dokumenName" name="dokumenName" class="form-control"
+                                            placeholder="Nama Dokumen">
+
+                                        <!-- 2. Pilih Fail -->
+                                        <button type="button" class="btn btn-success btn-md ms-2"
+                                            onclick="document.getElementById('fileDokumen').click()">
+                                            Pilih Fail
+                                        </button>
+                                        <input type="file" id="fileDokumen" name="fileDokumen" hidden>
+                                    </div>
+
+                                    <!-- 3. Tambah Dokumen -->
+                                    <button type="button" class="btn btn-primary mt-2"
+                                        onclick="/* your add‑doc logic here */">
+                                        Tambah Dokumen
+                                    </button>
+                                </div>
+                            </div>
+
+
                             <div class="row mt-4">
                                 <div class="col-12 d-flex justify-content-between">
                                     <div class="left">
@@ -1347,6 +1382,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                         <!-- expenses list -->
                         <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
@@ -1445,24 +1482,24 @@
 
                 </div>
                 <!-- <div class="row mt-4 justify-content-center">
-                                                                    <div class="col-12">
-                                                                        <h4 class="card-title card-title-grey">PENYEDIAAN IKLAN</h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row my-2">
-                                                                    <div class="col-12">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-12 d-flex justify-content-between">
-                                                                        <div class="left"></div>
-                                                                        <div class="right">
-                                                                            <button class="btn btn-success mx-1">Simpan</button>
-                                                                            <button class="btn btn-primary mx-1">Seterusnya</button>
+                                                                            <div class="col-12">
+                                                                                <h4 class="card-title card-title-grey">PENYEDIAAN IKLAN</h4>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div> -->
+                                                                        <div class="row my-2">
+                                                                            <div class="col-12">
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-12 d-flex justify-content-between">
+                                                                                <div class="left"></div>
+                                                                                <div class="right">
+                                                                                    <button class="btn btn-success mx-1">Simpan</button>
+                                                                                    <button class="btn btn-primary mx-1">Seterusnya</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div> -->
 
 
                 <div class="modal fade" id="borangPerincianTaklimatTender" tabindex="-1"
@@ -1513,30 +1550,30 @@
                 </div>
 
                 <!-- <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100" 
-                                                data-table-sort="id"
-                                                data-table-order="asc"
-                                                data-page="1">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-center"><input type="checkbox" name="" id="" class="form-check-input"></th>
-                                                        <th class="text-center">Jenis Kelulusan</th>
-                                                        <th class="text-center">Status <span class="text-danger">*</span></th>
-                                                        <th class="text-center">Dokumen</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-center"><input type="checkbox" name="" id="" class="form-check-input"></td>
-                                                        <td class="">Kelulusan Berbelanja</td>
-                                                        <td class="text-center">
-                                                            <select name="" id="" class="form-control">
-                                                                <option value="">Diluluskan</option>
-                                                            </select>
-                                                        </td>
-                                                        <td class="text-center"><button class="btn btn-success">Muat Naik</button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table> -->
+                                                        data-table-sort="id"
+                                                        data-table-order="asc"
+                                                        data-page="1">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center"><input type="checkbox" name="" id="" class="form-check-input"></th>
+                                                                <th class="text-center">Jenis Kelulusan</th>
+                                                                <th class="text-center">Status <span class="text-danger">*</span></th>
+                                                                <th class="text-center">Dokumen</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-center"><input type="checkbox" name="" id="" class="form-check-input"></td>
+                                                                <td class="">Kelulusan Berbelanja</td>
+                                                                <td class="text-center">
+                                                                    <select name="" id="" class="form-control">
+                                                                        <option value="">Diluluskan</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td class="text-center"><button class="btn btn-success">Muat Naik</button></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table> -->
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
 

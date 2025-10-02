@@ -98,6 +98,54 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/sebut-harga', function () {return view('pembelian-terus.sebut-harga');})->name('sebut-harga');
     Route::get('/sebut-harga-content', function () {return view('pembelian-terus.sebut-harga-content');})->name('sebut-harga-content');
     Route::get('/cut-off-pb', function () {return view('pembelian-terus.cut-off-pb');})->name('cut-off-pb');
+    Route::get('/pemilihan-syarikat', function () {return view('pembelian-terus.pemilihan-syarikat');})->name('pemilihan-syarikat');
+    Route::get('/pemilihan-syarikat-content', function () {return view('pembelian-terus.pemilihan-syarikat-content');})->name('pemilihan-syarikat-content');
+    Route::get('/keputusan-syarikat', function () {return view('pembelian-terus.keputusan-syarikat');})->name('keputusan-syarikat');
+    Route::get('/keputusan-syarikat-content', function () {return view('pembelian-terus.keputusan-syarikat-content');})->name('keputusan-syarikat-content');
+    Route::get('/cipta-projek-lantikan-terus', function () {return view('lantikan-terus.cipta-lantikan-terus');})->name('cipta-projek-lantikan-terus');
+    Route::get('/sebut-harga-lantikan', function () {return view('sebut-harga.sebut-harga');})->name('sebut-harga-lantikan');
+    // Route::get('/pemilihan-syarikat', function () {return view('pemilihan-syarikat.pemilihan-syarikat');})->name('pemilihan-syarikat');
+    // Route::get('/keputusan-syarikat', function () {return view('keputusan-syarikat.keputusan-syarikat');})->name('keputusan-syarikat');
+    Route::get('/maklumat-projek', function () {return view('penilaian-dokumen.maklumat-projek');})->name('maklumat-projek');
+    Route::get('/keputusan-mesyuarat', function () {return view('keputusan-mesyuarat.keputusan-mesyuarat');})->name('keputusan-mesyuarat');
+    Route::get('/pengesyoran-pembekal', function () {return view('keputusan-mesyuarat.pengesyoran-pembekal');})->name('pengesyoran-pembekal');
+    Route::get('kerja/penyediaan-spesifikasi-tender', function () {return view('kerja.penyediaan-spesifikasi-tender');})->name('penyediaan-spesifikasi-tender');
+    Route::get('kerja/spesifikasi-tender-content', function () {return view('kerja.spesifikasi-tender-content');})->name('spesifikasi-tender-content');
+    Route::get('kerja/maklumat-kewangan', function () {return view('kerja.maklumat-kewangan');})->name('maklumat-kewangan');
+    Route::get('kerja/maklumat-kewangan-content', function () {return view('kerja.maklumat-kewangan-content');})->name('maklumat-kewangan-content');
+    Route::get('kerja/penyediaan-dokumen-tender', function () {return view('kerja.penyediaan-dokumen-tender');})->name('penyediaan-dokumen-tender');
+    Route::get('kerja/lawatan-tapak-kerja', function () {return view('kerja.lawatan-tapak-kerja');})->name('lawatan-tapak-kerja');
+    Route::get('kerja/lawatan-tapak-kerja-content', function () {return view('kerja.lawatan-tapak-kerja-content');})->name('lawatan-tapak-kerja-content');
+    Route::get('kerja/mesyuarat-jk-kerja', function () {return view('kerja.mesyuarat-jk-kerja');})->name('mesyuarat-jk-kerja');
+    Route::get('kerja/mesyuarat-jk-kerja-content', function () {return view('kerja.mesyuarat-jk-kerja-content');})->name('mesyuarat-jk-kerja-content');
+    Route::get('kerja/pematuhan-dokumen-kerja', function () {return view('kerja.pematuhan-dokumen-kerja');})->name('pematuhan-dokumen-kerja');
+    Route::get('kerja/pematuhan-dokumen-kerja-content', function () {return view('kerja.pematuhan-dokumen-kerja-content');})->name('pematuhan-dokumen-kerja-content');
+    Route::get('kerja/penilaian-teknikal', function () {return view('kerja.penilaian-teknikal');})->name('penilaian-teknikal');
+    Route::get('kerja/penilaian-teknikal-content', function () {return view('kerja.penilaian-teknikal-content');})->name('penilaian-teknikal-content');
+    Route::get('kerja/penilaian-kewangan', function () {return view('kerja.penilaian-kewangan');})->name('penilaian-kewangan');
+    Route::get('kerja/borang1', function () {return view('kerja.borang1');})->name('borang1');
+    Route::get('kerja/borang2', function () {return view('kerja.borang2');})->name('borang2');
+    Route::get('kerja/analisa-kecukupan-modal', function () {return view('kerja.analisa-kecukupan-modal');})->name('analisa-kecukupan-modal');
+    Route::get('kerja/lembaran-imbangan', function () {return view('kerja.lembaran-imbangan');})->name('lembaran-imbangan');
+    Route::get('kerja/akaun-bank', function () {return view('kerja.akaun-bank');})->name('akaun-bank');
+    Route::get('kerja/bon-saham', function () {return view('kerja.bon-saham');})->name('bon-saham');
+    Route::get('kerja/borang4', function () {return view('kerja.borang4');})->name('borang4');
+    Route::get('kerja/borang5', function () {return view('kerja.borang5');})->name('borang5');
+    Route::get('kerja/borang6', function () {return view('kerja.borang6');})->name('borang6');
+    Route::get('kerja/borang7a', function () {return view('kerja.borang7a');})->name('borang7a');
+    Route::get('kerja/borang7b', function () {return view('kerja.borang7b');})->name('borang7b');
+    Route::get('kerja/borang8', function () {return view('kerja.borang8');})->name('borang8');
+    Route::get('kerja/borang9', function () {return view('kerja.borang9');})->name('borang9');
+    Route::get('kerja/borang9a', function () {return view('kerja.borang9a');})->name('borang9a');
+    Route::get('kerja/borang9b', function () {return view('kerja.borang9b');})->name('borang9b');
+    Route::get('kerja/borang10', function () {return view('kerja.borang10');})->name('borang10');
+    Route::get('kerja/borang11', function () {return view('kerja.borang11');})->name('borang11');
+    Route::get('kerja/borang12', function () {return view('kerja.borang12');})->name('borang12');
+    Route::get('kerja/borang13', function () {return view('kerja.borang13');})->name('borang13');
+    Route::get('kerja/borang14', function () {return view('kerja.borang14');})->name('borang14');
+    Route::get('kerja/borang15', function () {return view('kerja.borang15');})->name('borang15');
+
+
 
 
 
@@ -142,4 +190,18 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/team', [AdminController::class, 'team'])->name('admin.team');
         Route::get('/maintenance', [AdminController::class, 'maintenance'])->name('admin.maintenance');
     });
+
+    // Tetapan (Settings)
+Route::prefix('tetapan')->group(function () {
+
+    // Pengurusan Peranan
+    Route::get('/pengurusan-peranan', function () {
+        return view('tetapan.pengurusan-peranan');
+    })->name('pengurusan-peranan');
+
+    // Pengurusan Menu
+    Route::get('/pengurusan-menu', function () {
+        return view('tetapan.pengurusan-menu');
+    })->name('pengurusan-menu');
+});
 });

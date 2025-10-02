@@ -9,18 +9,20 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('build/images/favicon.ico') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @include('layouts.head-css')
-    
-    <!-- Dynamic CSS files -->
-    @if (isset($data['assets']['css']))
-        @foreach ($data['assets']['css'] as $cssFile)
-            <link rel="stylesheet" href="{{ URL::asset($cssFile) }}">
-        @endforeach
-    @endif
+    <link rel="stylesheet" href="{{ URL::asset('build/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/css/icons.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/css/app.min.css') }}">
+    <!-- <script src="{{ URL::asset('build/js/plugin.js') }}"></script> -->
+    <link rel="stylesheet" href="{{ URL::asset('build/libs/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/libs/spectrum-colorpicker2/spectrum.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/libs/@chenfengyuan/datepicker/datepicker.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 </head>
 
 @section('body')
@@ -52,17 +54,24 @@
     <!-- /Right-bar -->
 
     <!-- JAVASCRIPT -->
-    @include('layouts.vendor-scripts')
 
-    <!-- Dynamic JS files -->
-    @if (isset($data['assets']['js']))
-        @foreach ($data['assets']['js'] as $jsFile)
-            <script src="{{ URL::asset($jsFile) }}"></script>
-        @endforeach
-    @endif
+    <script src="{{ URL::asset('build/libs/jquery/jquery.min.js')}}"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="{{ URL::asset('build/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/metismenu/metisMenu.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/node-waves/waves.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{ URL::asset('build/js/pages/dashboard.init.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ URL::asset('build/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
     <script src="custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
@@ -70,9 +79,6 @@
 
             $(document).on('click', '.btn-action', function(e) {
                 e.preventDefault();
-                
-                // console.log($(this).data('action'));
-                // console.log($(this).attr('href'));
                 
                 let action = $(this).data('action');
                 let href = $(this).attr('href');
@@ -129,36 +135,6 @@
                             });
                         }
                     });
-                    // Swal.fire({
-                    //     title: "Submit your Github username",
-                    //     input: "text",
-                    //     inputAttributes: {
-                    //         autocapitalize: "off"
-                    //     },
-                    //     showCancelButton: true,
-                    //     confirmButtonText: "Look up",
-                    //     showLoaderOnConfirm: true,
-                    //     preConfirm: async (login) => {
-                    //         try {
-                    //             const githubUrl = `https://api.github.com/users/${login}`;
-                    //             const response = await fetch(githubUrl);
-                    //             if (!response.ok) {
-                    //                 return Swal.showValidationMessage(`${JSON.stringify(await response.json())}`);
-                    //             }
-                    //             return response.json();
-                    //         } catch (error) {
-                    //             Swal.showValidationMessage(`Request failed: ${error}`);
-                    //         }
-                    //     },
-                    //     allowOutsideClick: () => !Swal.isLoading()
-                    //     }).then((result) => {
-                    //     if (result.isConfirmed) {
-                    //         Swal.fire({
-                    //             title: `${result.value.login}'s avatar`,
-                    //             imageUrl: result.value.avatar_url
-                    //         });
-                    //     }
-                    // });
                 }
             });
         });

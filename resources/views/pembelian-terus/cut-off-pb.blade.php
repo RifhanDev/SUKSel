@@ -87,10 +87,7 @@
             </table>
         </div>
 
-        <div class="mt-3 text-end">
-            <!-- Button trigger modal -->
-            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
-        </div>
+        
 
     </div>
     <br>

@@ -1,13 +1,8 @@
-<footer class="footer">
+<footer class="footer bg-dark text-white py-3">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6">
-                <script>document.write(new Date().getFullYear())</script> © Skote.
-            </div>
-            <div class="col-sm-6">
-                <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Themesbrand
-                </div>
+            <div class="text-center">
+                <script>document.write(new Date().getFullYear())</script> © Hakcipta Kerajaan Negeri Selangor
             </div>
         </div>
     </div>

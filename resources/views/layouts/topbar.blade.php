@@ -91,11 +91,11 @@
                 </div>
             </div>
 
-            <div class="dropdown d-none d-lg-inline-block ms-1">
+            <!-- <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
                     <i class="bx bx-moon"></i>
                 </button>
-            </div>
+            </div> -->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
@@ -103,7 +103,7 @@
                     <i class="bx bx-bell bx-tada"></i>
                     <!-- <span class="badge bg-danger rounded-pill">3</span> -->
                 </button>
-                <!-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                     aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-3">
                         <div class="row align-items-center">
@@ -181,7 +181,7 @@
                             <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">@lang('translation.View_More')</span>
                         </a>
                     </div>
-                </div> -->
+                </div>
             </div>
 
             <div class="dropdown d-inline-block">
