@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/cipta-tender', [TenderController::class, 'getCiptaTender'])->name('getCiptaTender');
+    Route::post('/cipta-tender/store', [TenderController::class, 'store'])->name('storeCiptaTender');
     // Route::get('/cipta-tender', function () {return view('tender.cipta-tender');});
     Route::get('/cipta-tenderKerja', [TenderController::class, 'getCiptaTenderKerja']);
 
@@ -50,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/skor-keseluruhan', function () {return view('penyediaanSpesifikasiSkor.skor-keseluruhan');})->name('skor-keseluruhan');
     });
 
-    
+
     Route::get('/lawatan-tapak', function () {return view('lawatan-tapak.lawatan-tapak');})->name('lawatan-tapak');
 
     Route::get('/cut-off', function () {return view('cutoff.cutoff');})->name('cut-off');
@@ -62,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/peringkat-pematuhan', function () {return view('semakanPematuhanDokumen.pkc-peringkat-pematuhan');})->name('peringkat-pematuhan');
         Route::get('/peringkat-penilaian', function () {return view('semakanPematuhanDokumen.pkc-peringkat-penilaian');})->name('peringkat-penilaian');
     });
-    
+
 
     Route::get('/penyediaan-sst', function () {return view('penyediaan-sst.penyediaan-sst');})->name('penyediaan-sst');
 
@@ -153,7 +154,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // Route::get('/dashboard', function () {return view('users.index');})->name('dashboard');
-    
+
     Route::prefix('project')->group(function () {
         Route::get('/index', [ProjectsController::class, 'index'])->name('project.index');
         Route::match(['get','post'], '/index/project-data', [ProjectsController::class, 'getProjectsData'])->name('project.projectData');
@@ -165,15 +166,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/tasks', [ProjectsController::class, 'tasks'])->name('project.tasks');
 
         Route::get('/kanban', [ProjectsController::class, 'getKanban'])->name('project.getKanban');
-        
+
         Route::get('/overview/{project_name}', [ProjectsController::class, 'overview'])->name('project.overview');
     });
-    
+
     Route::prefix('financial')->group(function () {
         Route::get('/', [FinancialController::class, 'index'])->name('financial.index');
         Route::get('/cash-flow', [FinancialController::class, 'cashFlow'])->name('financial.cashFlow');
     });
-    
+
     Route::prefix('team')->group(function () {
         Route::get('/', [TeamsController::class, 'index'])->name('team.lists');
         Route::get('/index-table-data', [TeamsController::class, 'indexTableData'])->name('team.indexTableData');
@@ -183,7 +184,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/settings', [TeamsController::class, 'index'])->name('team.settings');
         Route::get('/{name}', [TeamsController::class, 'team_members'])->name('team.team_members');
     });
-    
+
     Route::prefix('admin')->group(function () {
         Route::get('/project', [AdminController::class, 'project'])->name('admin.project');
         Route::get('/financial', [AdminController::class, 'financial'])->name('admin.financial');

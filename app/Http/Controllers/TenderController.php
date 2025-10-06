@@ -132,4 +132,31 @@ class TenderController extends Controller
         return view('tender.cipta-tenderKerja'); // or whatever view you're using
     }
 
+    public function store(Request $request)
+    {
+        dd($request->all());
+        // Validate the request data
+        $request->validate([
+            'nama_tender' => 'required|string|max:255',
+            'tarikh_mula' => 'required|date',
+            'tarikh_tamat' => 'required|date|after_or_equal:tarikh_mula',
+            'jenis_tender' => 'required|string|max:255',
+            'kategori_tender' => 'required|string|max:255',
+            'status_tender' => 'required|string|max:255',
+        ]);
+
+        // Create a new tender record
+        $tender = new \App\Models\Tender();
+        $tender->nama_tender = $request->input('nama_tender');
+        $tender->tarikh_mula = $request->input('tarikh_mula');
+        $tender->tarikh_tamat = $request->input('tarikh_tamat');
+        $tender->jenis_tender = $request->input('jenis_tender');
+        $tender->kategori_tender = $request->input('kategori_tender');
+        $tender->status_tender = $request->input('status_tender');
+        $tender->save();
+
+        // Redirect or return response
+        return redirect()->route('getCiptaTender')->with('success', 'Tender created successfully!');
+    }
+
 }
