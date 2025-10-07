@@ -9,6 +9,7 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TetapanController;
 
 Route::get('/', [UserController::class, 'loginPage']);
 
@@ -199,6 +200,10 @@ Route::prefix('tetapan')->group(function () {
     Route::get('/pengurusan-peranan', function () {
         return view('tetapan.pengurusan-peranan');
     })->name('pengurusan-peranan');
+
+    // Pengurusan Peranan - DataTable AJAX
+    Route::post('/pengurusan-peranan/data', [TetapanController::class, 'getData'])
+        ->name('pengurusan-peranan.data');
 
     // Pengurusan Menu
     Route::get('/pengurusan-menu', function () {

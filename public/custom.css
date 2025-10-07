@@ -1,0 +1,9 @@
+.table th {
+    background-color:#405393;
+    color: white;
+    border: 1px solid #848484;
+}
+.dataTables_paginate {
+    float: right !important;
+    text-align: right !important;
+}
