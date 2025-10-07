@@ -196,9 +196,8 @@ Route::middleware(['auth'])->group(function () {
     // Tetapan (Settings)
 Route::prefix('tetapan')->group(function () {
 
-    Route::get('/pengurusan-peranan', function () {
-        return view('tetapan.pengurusan-peranan');
-    })->name('pengurusan-peranan');
+    Route::get('/pengurusan-peranan', [TetapanController::class, 'getPeranan'])
+    ->name('pengurusan-peranan');
 
     Route::post('/pengurusan-peranan/data', [TetapanController::class, 'getData'])
         ->name('pengurusan-peranan.data');

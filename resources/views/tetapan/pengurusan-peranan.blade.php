@@ -21,19 +21,19 @@
 					</div>
 				</div>
 				<div class="row mt-3">
-					@foreach (range(1, 3) as $i)
+					@foreach ($roles as $roles)
 						<div class="col-lg-3 col-sm-4 fadein-top">
 							<div class="card popup-btn" style="background-color:#DCDCDC">
 								<div class="card-body">
 									<div class="row">
 										<div class="col-sm-4">
 											<center>
-												<i class="fa fa-user" style="font-size:60px"></i>
+												<i class="fa fa-user" style="font-size:40px"></i>
 											</center>
 										</div>
 										<div class="col-sm-8">
-											<h5 class="card-title">Nama Peranan {{ $i }}</h5>
-											<h6 class="card-subtitle mb-2 text-muted"><i>Kemaskini Akses Peranan</i></h6>
+											<h5 class="card-title">{{ $roles->name }}</h5>
+											<h6 class="card-subtitle mb-2 text-muted"><i>Kemaskini Akses</i></h6>
 										</div>
 									</div>
 								</div>

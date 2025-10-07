@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class TetapanController extends Controller
 {
-    public function getData(Request $request)
+    public function getPeranan(Request $request)
     {
         $roles = DB::select("
             SELECT id, name, 'test' AS description
@@ -15,7 +15,7 @@ class TetapanController extends Controller
             WHERE true
         ");
 
-        return response()->json(['data' => $roles]);
+        return view('tetapan.pengurusan-peranan', ['roles' => $roles]);
     }
 
     public function getMenu()
