@@ -3,7 +3,30 @@
     color: white;
     border: 1px solid #848484;
 }
+
 .dataTables_paginate {
     float: right !important;
     text-align: right !important;
+}
+
+.fadein-top {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInFromAbove 1s ease-out forwards;
+}
+
+@keyframes fadeInFromAbove {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-btn {
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.popup-btn:hover {
+  transform: scale(1.05);
 }

@@ -196,18 +196,14 @@ Route::middleware(['auth'])->group(function () {
     // Tetapan (Settings)
 Route::prefix('tetapan')->group(function () {
 
-    // Pengurusan Peranan
     Route::get('/pengurusan-peranan', function () {
         return view('tetapan.pengurusan-peranan');
     })->name('pengurusan-peranan');
 
-    // Pengurusan Peranan - DataTable AJAX
     Route::post('/pengurusan-peranan/data', [TetapanController::class, 'getData'])
         ->name('pengurusan-peranan.data');
 
-    // Pengurusan Menu
-    Route::get('/pengurusan-menu', function () {
-        return view('tetapan.pengurusan-menu');
-    })->name('pengurusan-menu');
+    Route::get('/pengurusan-menu', [TetapanController::class, 'getMenu'])
+    ->name('pengurusan-menu');
 });
 });

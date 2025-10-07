@@ -9,20 +9,38 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                Pengurusan Peranan
+                <div class="row mb-3">
+					<h4 class="card-title">PENGURUSAN PERANAN</h4>
+				</div>
 
 				<div class="row">
-					<div class="col-sm-4">
-						<div class="card bg-primary">
-							<div class="card-body">
-								<h5 class="card-title">Card title</h5>
-								<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								<a href="#" class="card-link">Card link</a>
-								<a href="#" class="card-link">Another link</a>
-							</div>
+					<div class="col-12">
+						<div class=" float-end">
+							<button class="btn btn-primary w-100"><i class="fa fa-plus"></i> Daftar Peranan</button>
 						</div>
 					</div>
+				</div>
+				<div class="row mt-3">
+					@foreach (range(1, 3) as $i)
+						<div class="col-lg-3 col-sm-4 fadein-top">
+							<div class="card popup-btn" style="background-color:#DCDCDC">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-sm-4">
+											<center>
+												<i class="fa fa-user" style="font-size:60px"></i>
+											</center>
+										</div>
+										<div class="col-sm-8">
+											<h5 class="card-title">Nama Peranan {{ $i }}</h5>
+											<h6 class="card-subtitle mb-2 text-muted"><i>Kemaskini Akses Peranan</i></h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					@endforeach
+					
 				</div>
 
             </div>
