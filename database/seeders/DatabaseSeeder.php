@@ -8,6 +8,7 @@ use Database\Seeders\Ref\KategoriJenisPerolehan;
 use Database\Seeders\Ref\OpenTo;
 use Database\Seeders\Ref\SumberPeruntukan;
 use Database\Seeders\Ref\TypeOfContract;
+use Database\Seeders\Ref\TypeOfPemenuhan;
 use Database\Seeders\Ref\YesNo;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -33,6 +34,7 @@ class DatabaseSeeder extends Seeder
             SumberPeruntukan::class,
             OpenTo::class,
             TypeOfContract::class,
+            TypeOfPemenuhan::class,
         ]);
     }
 }
