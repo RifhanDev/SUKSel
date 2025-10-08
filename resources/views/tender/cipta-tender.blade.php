@@ -96,7 +96,11 @@
 
 	<div class="col-12">
 		<div class="card">
-			<form action="{{ route('storeCiptaTender') }}" method="POST">
+			<form action="{{ isset($tender) ? route('updateCiptaTender', $tender->id) : route('storeCiptaTender') }}"
+				method="POST">
+				@if (isset($tender))
+					@method('PUT')
+				@endif
 				@csrf
 				<div class="card-body">
 					<div class="row">
@@ -151,19 +155,26 @@
 													<label for="" class="">Kaedah Perolehan</label>
 												</div>
 												<div class="col-md-4 text-end">
-													<select class="form-control" name="">
-														<option value="">Tender</option>
-														<option value="">Sebut Harga</option>
+													<select class="form-control" name="kaedah_perolehan_id">
+														<option value="">- Sila Pilih -</option>
+														@foreach ($RefKaedahPerolehan as $kaedah)
+															<option value="{{ $kaedah->id }}" @if (old('kaedah_perolehan_id', isset($tender) ? $tender->kaedah_perolehan_id : null) == $kaedah->id) selected @endif>
+																{{ $kaedah->name }}
+															</option>
+														@endforeach
 													</select>
 												</div>
 												<div class="col-md-2 text-end">
 													<label for="" class="">Kategori Jenis Perolehan <span class="text-danger">*</span></label>
 												</div>
 												<div class="col-md-4">
-													<select class="form-control" id="kategoriJenis">
-														<option value="perkhidmatan">Perkhidmatan</option>
-														<option value="bekalan">Bekalan</option>
-														<option value="kerja">Kerja</option>
+													<select class="form-control" name="kategori_jenis_perolehan_id">
+														<option value="">- Sila Pilih -</option>
+														@foreach ($RefKategoriJenisPerolehan as $item)
+															<option value="{{ $item->id }}" @if (old('kategori_jenis_perolehan_id', isset($tender) ? $tender->kategori_jenis_perolehan_id : null) == $item->id) selected @endif>
+																{{ $item->name }}
+															</option>
+														@endforeach
 													</select>
 												</div>
 											</div>
@@ -178,18 +189,15 @@
 														<label for="" class="">Item Panel <span class="text-danger">*</span></label>
 													</div>
 													<div class="col-md-10">
-														<div class="form-check form-check-inline">
-															<input class="form-check-input" type="radio" name="formRadios" id="formRadios1" checked>
-															<label class="form-check-label" for="formRadios1">
-																Ya
-															</label>
-														</div>
-														<div class="form-check form-check-inline">
-															<input class="form-check-input" type="radio" name="formRadios" id="formRadios2">
-															<label class="form-check-label" for="formRadios2">
-																Tidak
-															</label>
-														</div>
+														@foreach ($RefYesNo as $item)
+															<div class="form-check form-check-inline">
+																<input class="form-check-input" type="radio" name="item_panel" id="item_panel_{{ $item->id }}"
+																	value="{{ $item->id }}" @if (old('item_panel', isset($tender) ? $tender->item_panel : null) == $item->id) checked @endif>
+																<label class="form-check-label" for="item_panel_{{ $item->id }}">
+																	{{ $item->name }}
+																</label>
+															</div>
+														@endforeach
 													</div>
 												</div>
 											</div>
@@ -201,7 +209,7 @@
 														<label for="" class="">Tajuk Perolehan <span class="text-danger">*</span></label>
 													</div>
 													<div class="col-md-10">
-														<textarea class="form-control" name=""></textarea>
+														<textarea class="form-control" name="tajuk_perolehan"></textarea>
 													</div>
 												</div>
 											</div>
@@ -214,8 +222,8 @@
 													</div>
 													<div class="col-md-10">
 														<div class="input-group">
-															<select class="form-control" name="">
-																<option value="">BAHAGIAN PENTADBIRAN - CAWANNGAN
+															<select class="form-control" name="disediakan_untuk_ptj_id">
+																<option value="1">BAHAGIAN PENTADBIRAN - CAWANNGAN
 																	KEWANGAN -
 																	KEMENTERIAN KEWANGAN</option>
 															</select>
@@ -229,10 +237,10 @@
 											<div class="col-md-12 my-2">
 												<div class="row">
 													<div class="col-md-2 d-flex justify-content-end">
-														<label for="" class="">No. Rujukan Fail <span class="text-danger">*</span></label>
+														<label for="no_rujukan_fail" class="">No. Rujukan Fail <span class="text-danger">*</span></label>
 													</div>
 													<div class="col-md-10">
-														<input class="form-control" type="text">
+														<input class="form-control" type="text" name="no_rujukan_fail">
 													</div>
 												</div>
 											</div>
@@ -244,7 +252,7 @@
 														<label for="" class="">Tarikh Dicipta</label>
 													</div>
 													<div class="col-md-3">
-														<input class="form-control" type="date">
+														<input class="form-control" type="date" name="tarikh_dicipta">
 													</div>
 												</div>
 											</div>
@@ -253,11 +261,11 @@
 											<div class="col-md-12 my-2">
 												<div class="row">
 													<div class="col-md-2 text-end">
-														<label for="" class="">Jumlah Harga Indikatif
+														<label for="jumlah_harga_indikatif" class="">Jumlah Harga Indikatif
 															Jangkaan (RM) <span class="text-danger">*</span></label>
 													</div>
 													<div class="col-md-4">
-														<input class="form-control" type="number" name="">
+														<input class="form-control" type="number" name="jumlah_harga_indikatif">
 													</div>
 													<div class="col-md-2 text-end">
 														<label for="" class="">Anggaran Jabatan <span class="text-danger">*</span></label>
@@ -268,63 +276,51 @@
 													<div class="col-md-2 text-end">
 														<label for="" class="">Sumber Peruntukan <span class="text-danger">*</span></label>
 													</div>
-													<div class="col-md-2">
-														<div class="form-check form-check-inline">
-															<input class="form-check-input" type="radio" name="sumberPeruntukan" id="pembangunan" checked>
-															<label class="form-check-label" for="pembangunan">
-																Pembangunan
-															</label>
-														</div>
-														<div class="form-check form-check-inline">
-															<input class="form-check-input" type="radio" name="sumberPeruntukan" id="mengurus">
-															<label class="form-check-label" for="mengurus">
-																Mengurus
-															</label>
-														</div>
+													<div class="col-md-10">
+														@foreach ($RefSumberPeruntukan as $item)
+															<div class="form-check form-check-inline">
+																<input class="form-check-input" type="radio" name="sumber_peruntukan"
+																	id="sumber_peruntukan_{{ $item->id }}" value="{{ $item->id }}"
+																	@if (old('sumber_peruntukan', isset($tender) ? $tender->sumber_peruntukan : null) == $item->id) checked @endif>
+																<label class="form-check-label" for="sumber_peruntukan_{{ $item->id }}">
+																	{{ $item->name }}
+																</label>
+															</div>
+														@endforeach
 													</div>
 												</div>
 											</div>
 											<!-- Jumlah Harga Indikatif Jangkaan (RM) -->
 
-											<!-- Sumber Peruntukan -->
-											<div class="col-md-12 my-2">
-												<div class="row">
-
-												</div>
-											</div>
-											<!-- Sumber Peruntukan -->
 											<!-- Jenis Sebut Harga / Tender -->
 											<div class="col-md-12 my-2">
 												<div class="row">
 													<div class="col-md-2 text-end">
-														<label for="" class=""> Jenis Tender/Sebut Harga
-															<span class="text-danger">*</span></label>
+														<label for="" class="required">Jenis Tender/Sebut Harga</label>
 													</div>
 													<div class="col-md-4">
-														<select class="form-control" name="">
-															<option value="">Konvensional</option>
-															<option value="">Reka & Bina</option>
-															<option value="">Terhad</option>
+														<select class="form-control" name="jenis_tender_id">
+															<option value="">- Sila Pilih -</option>
+															@foreach ($RefTypeOfTender as $item)
+																<option value="{{ $item->id }}" @if (old('jenis_tender_id', isset($tender) ? $tender->jenis_tender_id : null) == $item->id) selected @endif>
+																	{{ $item->name }}
+																</option>
+															@endforeach
 														</select>
-
-
 													</div>
 													<div class="col-md-2 text-end">
 														<label for="" class="">Terbuka Kepada <span class="text-danger">*</span></label>
 													</div>
 													<div class="col-md-4">
-														<div class="form-check form-check-inline">
-															<input class="form-check-input" type="radio" name="terbukaKepada" id="terbukaKepada1">
-															<label class="form-check-label" for="terbukaKepada1">
-																Bumiputra
-															</label>
-														</div>
-														<div class="form-check form-check-inline">
-															<input class="form-check-input" type="radio" name="terbukaKepada" id="terbukaKepada2" checked>
-															<label class="form-check-label" for="terbukaKepada2">
-																Semua
-															</label>
-														</div>
+														@foreach ($RefOpenTo as $item)
+															<div class="form-check form-check-inline">
+																<input class="form-check-input" type="radio" name="open_to_id" id="open_to_id_{{ $item->id }}"
+																	value="{{ $item->id }}" @if (old('open_to_id', isset($tender) ? $tender->open_to_id : null) == $item->id) checked @endif>
+																<label class="form-check-label" for="open_to_id_{{ $item->id }}">
+																	{{ $item->name }}
+																</label>
+															</div>
+														@endforeach
 													</div>
 												</div>
 
@@ -334,37 +330,32 @@
 															<label for="" class="">Zon / Lokasi</label>
 														</div>
 														<div class="col-md-2">
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="zonLokasi" id="zonLokasi1">
-																<label class="form-check-label" for="zonLokasi1">
-																	Ya
-																</label>
-															</div>
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="zonLokasi" id="zonLokasi2" checked>
-																<label class="form-check-label" for="zonLokasi2">
-																	Tidak
-																</label>
-															</div>
-
+															@foreach ($RefYesNo as $item)
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" type="radio" name="is_zon_location"
+																		id="is_zon_location_{{ $item->id }}" value="{{ $item->id }}"
+																		@if (old('is_zon_location', isset($tender) ? $tender->is_zon_location : null) == $item->id) checked @endif>
+																	<label class="form-check-label" for="is_zon_location_{{ $item->id }}">
+																		{{ $item->name }}
+																	</label>
+																</div>
+															@endforeach
 														</div>
 														<div class="col-md-4 text-end ">
 															<label for="" class="">Taklimat Tender / Lawatan
 																Tapak&nbsp;<span class="text-danger">*</span></label>
 														</div>
 														<div class="col-md-4">
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="taklimat" id="ada" checked>
-																<label class="form-check-label" for="ada">
-																	Ada
-																</label>
-															</div>
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="taklimat" id="tidak">
-																<label class="form-check-label" for="tidak">
-																	Tidak
-																</label>
-															</div>
+															@foreach ($RefHaveNo as $item)
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" type="radio" name="is_taklimat_tender"
+																		id="is_taklimat_tender_{{ $item->id }}" value="{{ $item->id }}"
+																		@if (old('is_taklimat_tender', isset($tender) ? $tender->is_taklimat_tender : null) == $item->id) checked @endif>
+																	<label class="form-check-label" for="is_taklimat_tender_{{ $item->id }}">
+																		{{ $item->name }}
+																	</label>
+																</div>
+															@endforeach
 														</div>
 													</div>
 												</div>
@@ -375,12 +366,8 @@
 															<label for="" class="">Lokaliti Liputan</label>
 														</div>
 														<div class="col-md-4">
-															<select class="form-control" name="">
-																<option value=""></option>
-															</select>
+															<input type="text" class="form-control" name="lokasi_liputan">
 														</div>
-
-
 													</div>
 												</div>
 												<!-- Lokaliti Penilaian -->
@@ -392,16 +379,26 @@
 															<label for="" class="">Jenis Kontrak <span class="text-danger">*</span></label>
 														</div>
 														<div class="col-md-4">
-															<select class="form-control" name="">
-																<option value="">Kementerian</option>
+															<select class="form-control" name="jenis_kontrak_id">
+																<option value="">- Sila Pilih -</option>
+																@foreach ($RefTypeOfContract as $item)
+																	<option value="{{ $item->id }}" @if (old('jenis_kontrak_id', isset($tender) ? $tender->jenis_kontrak_id : null) == $item->id) selected @endif>
+																		{{ $item->name }}
+																	</option>
+																@endforeach
 															</select>
 														</div>
 														<div class="col-md-2 d-flex justify-content-end">
 															<label for="" class="">Kategori Perolehan <span class="text-danger">*</span></label>
 														</div>
 														<div class="col-md-4">
-															<select class="form-control" name="">
-																<option value="">ICT</option>
+															<select class="form-control" name="jenis_perolehan_id">
+																<option value="">- Sila Pilih -</option>
+																@foreach ($RefTypeOfPerolehan as $item)
+																	<option value="{{ $item->id }}" @if (old('jenis_perolehan_id', isset($tender) ? $tender->jenis_perolehan_id : null) == $item->id) selected @endif>
+																		{{ $item->name }}
+																	</option>
+																@endforeach
 															</select>
 														</div>
 
@@ -417,8 +414,13 @@
 															<label for="" class="">Jenis Pemenuhan <span class="text-danger">*</span></label>
 														</div>
 														<div class="col-md-4">
-															<select class="form-control" name="">
-																<option value="">Bermasa (Bila Perlu)</option>
+															<select class="form-control" name="jenis_pemenuhan_id">
+																<option value="">- Sila Pilih -</option>
+																@foreach ($RefJenisPemenuhan as $item)
+																	<option value="{{ $item->id }}" @if (old('jenis_pemenuhan_id', isset($tender) ? $tender->jenis_pemenuhan_id : null) == $item->id) selected @endif>
+																		{{ $item->name }}
+																	</option>
+																@endforeach
 															</select>
 														</div>
 														<div class="col-md-2 d-flex justify-content-end">
@@ -426,7 +428,7 @@
 																(Jika Ada)</label>
 														</div>
 														<div class="col-md-4">
-															<input class="form-control" type="text" name="">
+															<input class="form-control" type="text" name="no_kontrak_sedia_ada">
 														</div>
 													</div>
 												</div>
@@ -441,28 +443,23 @@
 																<span class="text-danger">*</span></label>
 														</div>
 														<div class="col-md-4">
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="kelulusanSpesifikasiDaripadaKementerian"
-																	id="kelulusanSpesifikasiDaripadaKementerian1">
-																<label class="form-check-label" for="kelulusanSpesifikasiDaripadaKementerian1">
-																	Ya
-																</label>
-															</div>
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="kelulusanSpesifikasiDaripadaKementerian"
-																	id="kelulusanSpesifikasiDaripadaKementerian2" checked>
-																<label class="form-check-label" for="kelulusanSpesifikasiDaripadaKementerian2">
-																	Tidak
-																</label>
-															</div>
-
+															@foreach ($RefYesNo as $item)
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" type="radio" name="is_kelulusan_spesifikasi"
+																		id="is_kelulusan_spesifikasi_{{ $item->id }}" value="{{ $item->id }}"
+																		@if (old('is_kelulusan_spesifikasi', isset($tender) ? $tender->is_kelulusan_spesifikasi : null) == $item->id) checked @endif>
+																	<label class="form-check-label" for="is_kelulusan_spesifikasi_{{ $item->id }}">
+																		{{ $item->name }}
+																	</label>
+																</div>
+															@endforeach
 														</div>
 														<div class="col-md-2 d-flex justify-content-end">
 															<label for="" class="">Tempoh Kontrak /
 																Penyiapan (Bulan)</label>
 														</div>
 														<div class="col-md-4">
-															<input class="form-control" type="number" name="">
+															<input class="form-control" type="number" name="tempoh_kontrak">
 														</div>
 													</div>
 												</div>
@@ -474,19 +471,16 @@
 																<span class="text-danger">*</span></label>
 														</div>
 														<div class="col-md-4">
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="penghantaranFizikal" id="penghantaranFizikal1"
-																	checked>
-																<label class="form-check-label" for="penghantaranFizikal1">
-																	Ya
-																</label>
-															</div>
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="penghantaranFizikal" id="penghantaranFizikal2">
-																<label class="form-check-label" for="penghantaranFizikal2">
-																	Tidak
-																</label>
-															</div>
+															@foreach ($RefYesNo as $item)
+																<div class="form-check form-check-inline">
+																	<input class="form-check-input" type="radio" name="is_penghantaran_fizikal"
+																		id="is_penghantaran_fizikal_{{ $item->id }}" value="{{ $item->id }}"
+																		@if (old('is_penghantaran_fizikal', isset($tender) ? $tender->is_penghantaran_fizikal : null) == $item->id) checked @endif>
+																	<label class="form-check-label" for="is_penghantaran_fizikal_{{ $item->id }}">
+																		{{ $item->name }}
+																	</label>
+																</div>
+															@endforeach
 														</div>
 													</div>
 												</div>
@@ -574,25 +568,19 @@
 													<input class="form-control" type="number" name="">
 												</div>
 												<div class="col-md-4 text-end">
-													<label class="required">Sumber Peruntukan</label>
+													<label class="required">Sumber Peruntukan (2)</label>
 												</div>
 												<div class="col-md-4">
-													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="formRadios" id="formRadios1" checked>
-														<label class="form-check-label" for="formRadios1">Pembangunan</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="formRadios" id="formRadios2">
-														<label class="form-check-label" for="formRadios2">Mengurus</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input class="form-check-input" type="radio" name="formRadios" id="formRadios3">
-														<label class="form-check-label" for="formRadios3">Lain-Lain</label>
-													</div>
-													<!-- Textbox for "Lain-Lain", hidden initially -->
-													<div id="lainLainInput" class="mt-2" style="display: none;">
-														<input type="text" class="form-control" placeholder="Sila nyatakan">
-													</div>
+													{{-- @foreach ($RefSumberPeruntukan as $item)
+														<div class="form-check form-check-inline">
+															<input class="form-check-input" type="radio" name="is_penghantaran_fizikal"
+																id="is_penghantaran_fizikal_{{ $item->id }}" value="{{ $item->id }}"
+																@if (old('is_penghantaran_fizikal', isset($tender) ? $tender->is_penghantaran_fizikal : null) == $item->id) checked @endif>
+															<label class="form-check-label" for="is_penghantaran_fizikal_{{ $item->id }}">
+																{{ $item->name }}
+															</label>
+														</div>
+													@endforeach --}}
 												</div>
 											</div>
 										</div>
