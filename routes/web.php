@@ -383,5 +383,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/pengurusan-menu', [TetapanController::class, 'getMenu'])
     ->name('pengurusan-menu');
+
+    Route::get('/pengurusan-peranan-form', function () {
+            return view('tetapan.pengurusan-peranan-form');
+        })->name('pengurusan-peranan-form');
+
+    Route::get('/menu/tree-data', [TetapanController::class, 'getMenuTree'])->name('menu.tree-data');
 });
 });

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ URL::asset('build/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('build/libs/@chenfengyuan/datepicker/datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('build/libs/bootstrap3-dialog-master/dist/css/bootstrap-dialog.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('build/libs/vakata-jstree-6256df0/dist/themes/default/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 </head>
@@ -71,6 +72,7 @@
     <script src="{{ URL::asset('build/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{ URL::asset('build/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
     <script src="{{ URL::asset('build/libs/bootstrap3-dialog-master/dist/js/bootstrap-dialog.js') }}"></script>
+    <script src="{{ URL::asset('build/libs/vakata-jstree-6256df0/dist/jstree.js') }}"></script>
     <script src="{{ URL::asset('custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script> -->
