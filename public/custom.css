@@ -30,3 +30,24 @@
 .popup-btn:hover {
   transform: scale(1.05);
 }
+
+.bootstrap-dialog .modal-dialog {
+  margin: 1.75rem auto;
+}
+
+.bootstrap-dialog .modal-content {
+  border-radius: .5rem;
+}
+
+.bootstrap-dialog .bootstrap-dialog-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.bootstrap-dialog .modal-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.bootstrap-dialog .modal-footer {
+  border-top: 1px solid #dee2e6;
+}
