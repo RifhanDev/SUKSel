@@ -10,9 +10,9 @@ class TetapanController extends Controller
     public function getPeranan(Request $request)
     {
         $roles = DB::select("
-            SELECT id, name, 'test' AS description
+            SELECT id, name
             FROM roles
-            WHERE true
+            ORDER BY id ASC
         ");
 
         return view('tetapan.pengurusan-peranan', ['roles' => $roles]);
@@ -31,6 +31,41 @@ class TetapanController extends Controller
         }
 
         return view('tetapan.pengurusan-menu', ['menus' => $mainMenus]);
+    }
+
+    public function getMenuTree()
+    {
+        $menus = DB::select("
+            SELECT menu_id, main_id, title 
+            FROM menu
+        ");
+        $tree = $this->buildTree($menus);
+
+        return response()->json($tree);
+    }
+
+    private function buildTree($menus, $parentId = null)
+    {
+        $branch = [];
+
+        foreach ($menus as $menu) {
+            if ($menu->main_id == $parentId) {
+                $children = $this->buildTree($menus, $menu->menu_id);
+
+                $node = [
+                    'id'   => $menu->menu_id,
+                    'text' => $menu->title,
+                ];
+
+                if (!empty($children)) {
+                    $node['children'] = $children;
+                }
+
+                $branch[] = $node;
+            }
+        }
+
+        return $branch;
     }
 
 }

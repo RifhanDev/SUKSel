@@ -21,9 +21,9 @@
 					</div>
 				</div>
 				<div class="row mt-3">
-					@foreach ($roles as $roles)
+					@foreach ($roles as $role)
 						<div class="col-lg-3 col-sm-4 fadein-top">
-							<div class="card popup-btn" style="background-color:#DCDCDC" onclick="testDialog(2);">
+							<div class="card popup-btn" style="background-color:#DCDCDC" onclick="testDialog(1,{{ $role->id }});">
 								<div class="card-body">
 									<div class="row">
 										<div class="col-sm-4">
@@ -32,7 +32,7 @@
 											</center>
 										</div>
 										<div class="col-sm-8">
-											<h5 class="card-title">{{ $roles->name }}</h5>
+											<h5 class="card-title">{{ $role->name }}</h5>
 											<h6 class="card-subtitle mb-2 text-muted"><i>Kemaskini Akses</i></h6>
 										</div>
 									</div>
@@ -50,36 +50,40 @@
 @push('scripts')
 <script>
 
-	testDialog = function(process,data)
+	testDialog = function(p1, p2)
 	{
-		if(process == '2')
+		if (p1 == '1')
 		{
 			let param = $.param({
-				tax_id: data
+				id: p2
 			});
 
-			var title = 'Kemaskini Akses';
-			var target = '#application.apps_setting.homepath#module/g-fix-asset/insurance/tax/form.cfm?'+param;
+			var title  = 'Kemaskini Akses';
+			var target = '/tetapan/pengurusan-peranan-form?' + param;
 		}
 
 		BootstrapDialog.show({
 			size: BootstrapDialog.SIZE_WIDE,
-			type: 	BootstrapDialog.TYPE_DEFAULT,
+			type: BootstrapDialog.TYPE_DEFAULT,
 			title: title,
 			cssClass: 'application-info',
-			// message: $('<div></div>').load(target),
-			message: 'test',
+			message: $('<div></div>').load(target, function() {
+				$(this).find('script').each(function() {
+					$.globalEval($(this).text());
+				});
+			}),
 			closable: false,
 			closeByBackdrop: false,
 			closeByKeyboard: false,
 			buttons: [{
 				label: 'Tutup',
-				action: function(dialogRef){
+				action: function(dialogRef) {
 					dialogRef.close();
 				}
 			}]
 		});
 	}
+
 	
 </script>
 @endpush
