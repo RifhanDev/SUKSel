@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('approver_id')->nullable();
             $table->text('remark')->nullable();
             $table->dateTime('last_login')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
 
             $table->rememberToken();
             $table->timestamps();

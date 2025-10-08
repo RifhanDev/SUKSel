@@ -2,11 +2,11 @@
 
 namespace Database\Seeders\Ref;
 
-use App\Models\Ref\RefSumberPeruntukan;
+use App\Models\Ref\RefTypeOfTender;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class SumberPeruntukan extends Seeder
+class TypeOfTender extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,22 +15,22 @@ class SumberPeruntukan extends Seeder
     {
 
         // Create Admin User
-        RefSumberPeruntukan::create([
-            'name' => 'Pembangunan',
+        RefTypeOfTender::create([
+            'name' => 'Konvensional',
             'active' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
 
-        RefSumberPeruntukan::create([
-            'name' => 'Mengurus',
+        RefTypeOfTender::create([
+            'name' => 'Reka & Bina',
             'active' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
 
-        RefSumberPeruntukan::create([
-            'name' => 'Lain-lain',
+        RefTypeOfTender::create([
+            'name' => 'Terhad',
             'active' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

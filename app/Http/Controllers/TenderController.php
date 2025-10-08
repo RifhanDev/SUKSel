@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Projects;
 use App\Helpers\Helper;
+use App\Models\Ref\RefHaveNo;
+use App\Models\Ref\RefKaedahPerolehan;
+use App\Models\Ref\RefKategoriJenisPerolehan;
+use App\Models\Ref\RefOpenTo;
+use App\Models\Ref\RefSumberPeruntukan;
+use App\Models\Ref\RefTypeOfContract;
+use App\Models\Ref\RefTypeOfPemenuhan;
+use App\Models\Ref\RefTypeOfPerolehan;
+use App\Models\Ref\RefTypeOfTender;
+use App\Models\Ref\RefYesNo;
 use App\Models\Team;
 use App\Models\TeamUser;
 use Carbon\Carbon;
@@ -31,21 +41,24 @@ class TenderController extends Controller
             $role = $this->role;
 
             $data = [];
+            $data['RefKaedahPerolehan'] = RefKaedahPerolehan::all();
+            $data['RefKategoriJenisPerolehan'] = RefKategoriJenisPerolehan::all();
+            $data['RefYesNo'] = RefYesNo::all();
+            $data['RefSumberPeruntukan'] = RefSumberPeruntukan::all();
+            $data['RefTypeOfTender'] = RefTypeOfTender::all();
+            $data['RefOpenTo'] = RefOpenTo::all();
+            $data['RefHaveNo'] = RefHaveNo::all();
+            $data['RefTypeOfContract'] = RefTypeOfContract::all();
+            $data['RefJenisPemenuhan'] = RefTypeOfPemenuhan::all();
+            $data['RefTypeOfPerolehan'] = RefTypeOfPerolehan::all();
 
             // 🔒 This restricts to role == 1
             if ($role == 1) {
-                return view('tender.cipta-tender', compact('data'));
+                return view('tender.cipta-tender', $data);
             }
 
             // 📝 TEMPORARY: always return view for testing
-            return view('tender.cipta-tender', compact('data'));
-
-            // For AJAX call
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Project created successfully!'
-            ], 200);
-
+            return view('tender.cipta-tender', $data);
         } catch (\Throwable $th) {
             Log::error($this->class_name . '->' . __FUNCTION__ .
                 ' | Line : ' . $th->getLine() .
@@ -68,7 +81,6 @@ class TenderController extends Controller
                     'status' => 'success',
                     'message' => 'Project created successfully!'
                 ], 200);
-
             } catch (\Throwable $th) {
                 Log::error($this->class_name . '->' . __FUNCTION__ .
                     ' | Line : ' . $th->getLine() .
@@ -96,7 +108,8 @@ class TenderController extends Controller
                 foreach ($teams as $team) {
                     $tableRows .= '<tr>';
                     $tableRows .= '<td class="text-center">' . $i++ . '</td>';
-                    $tableRows .= '<td class="text-left"><a href="/team/team_members/' . $team->name . '">' . $team->name . '</a></td>';
+                    $tableRows .= '<td class="text-left"><a href="/team/team_members/' . $team
+                        ->name . '">' . $team->name . '</a></td>';
                     $tableRows .= '<td class="text-center">' . $team->user_id . '</td>';
                     $tableRows .= '<td class="text-center">' . $team->created_at . '</td>';
                     $tableRows .= '<td class="text-center"><button class="btn btn-sm btn-primary">Edit</button></td>';
@@ -114,7 +127,6 @@ class TenderController extends Controller
                     'status' => 'success',
                     'message' => 'Project created successfully!'
                 ], 200);
-
             } catch (\Throwable $th) {
                 Log::error($this->class_name . '->' . __FUNCTION__ .
                     ' | Line : ' . $th->getLine() .
@@ -158,5 +170,4 @@ class TenderController extends Controller
         // Redirect or return response
         return redirect()->route('getCiptaTender')->with('success', 'Tender created successfully!');
     }
-
 }
